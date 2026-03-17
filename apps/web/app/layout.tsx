@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google"
 
-import "@workspace/ui/globals.css"
+import "@mergeium/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@mergeium/ui/lib/utils";
 
 const roboto = Roboto({subsets:['latin'],variable:'--font-sans'})
 

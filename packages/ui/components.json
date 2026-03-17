@@ -11,11 +11,11 @@
   },
   "iconLibrary": "phosphor",
   "aliases": {
-    "components": "@workspace/ui/components",
-    "utils": "@workspace/ui/lib/utils",
-    "hooks": "@workspace/ui/hooks",
-    "lib": "@workspace/ui/lib",
-    "ui": "@workspace/ui/components"
+    "components": "@mergeium/ui/components",
+    "utils": "@mergeium/ui/lib/utils",
+    "hooks": "@mergeium/ui/hooks",
+    "lib": "@mergeium/ui/lib",
+    "ui": "@mergeium/ui/components"
   },
   "rtl": true,
   "menuColor": "default",
