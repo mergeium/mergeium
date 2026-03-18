@@ -28,9 +28,11 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                     <Label htmlFor="password-new">{msg("passwordNew")}</Label>
                     <PasswordWrapper i18n={i18n} passwordInputId="password-new">
                         <Input
+                            variant="secondary"
                             type="password"
                             id="password-new"
                             name="password-new"
+                            size="xl"
                             autoFocus
                             autoComplete="new-password"
                             aria-invalid={messagesPerField.existsError("password", "password-confirm")}
@@ -52,9 +54,11 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                     <Label htmlFor="password-confirm">{msg("passwordConfirm")}</Label>
                     <PasswordWrapper i18n={i18n} passwordInputId="password-confirm">
                         <Input
+                            variant="secondary"
                             type="password"
                             id="password-confirm"
                             name="password-confirm"
+                            size="xl"
                             autoComplete="new-password"
                             aria-invalid={messagesPerField.existsError("password", "password-confirm")}
                         />
@@ -74,11 +78,11 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                 <LogoutOtherSessions i18n={i18n} />
 
                 <div className="flex items-center gap-2">
-                    <Button type="submit" className={isAppInitiatedAction ? "" : "w-full"}>
+                    <Button type="submit" size="xl" className={isAppInitiatedAction ? "" : "w-full"}>
                         {msgStr("doSubmit")}
                     </Button>
                     {isAppInitiatedAction && (
-                        <Button variant="outline" type="submit" name="cancel-aia" value="true">
+                        <Button variant="outline" size="xl" type="submit" name="cancel-aia" value="true">
                             {msg("doCancel")}
                         </Button>
                     )}

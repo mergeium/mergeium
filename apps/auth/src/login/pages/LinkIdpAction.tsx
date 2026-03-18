@@ -23,10 +23,10 @@ export default function LinkIdpAction(props: { kcContext: Extract<KcContext, { p
                 </p>
                 <form action={url.loginAction} method="post">
                     <div className="flex gap-2">
-                        <Button type="submit" name="continue" id="kc-continue">
+                        <Button type="submit" size="xl" name="continue" id="kc-continue">
                             {msgStr("doContinue")}
                         </Button>
-                        <Button type="submit" name="cancel-aia" id="kc-cancel" variant="outline">
+                        <Button type="submit" size="xl" name="cancel-aia" id="kc-cancel" variant="outline">
                             {msgStr("doCancel")}
                         </Button>
                     </div>

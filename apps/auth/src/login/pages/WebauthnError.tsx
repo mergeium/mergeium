@@ -23,6 +23,7 @@ export default function WebauthnError(props: { kcContext: Extract<KcContext, { p
                     <input type="hidden" id="isSetRetry" name="isSetRetry" />
                 </form>
                 <Button
+                    size="xl"
                     className="w-full"
                     onClick={() => {
                         // @ts-expect-error: Trusted Keycloak's code
@@ -43,6 +44,7 @@ export default function WebauthnError(props: { kcContext: Extract<KcContext, { p
                         <Button
                             type="submit"
                             variant="outline"
+                            size="xl"
                             className="w-full"
                             id="cancelWebAuthnAIA"
                             name="cancel-aia"

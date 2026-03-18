@@ -77,15 +77,15 @@ export default function LoginRecoveryAuthnCodeConfig(props: { kcContext: Extract
 
                 {isAppInitiatedAction ? (
                     <div className="flex gap-2">
-                        <Button type="submit" id="saveRecoveryAuthnCodesBtn" disabled>
+                        <Button type="submit" size="xl" id="saveRecoveryAuthnCodesBtn" disabled>
                             {msgStr("recovery-codes-action-complete")}
                         </Button>
-                        <Button type="submit" variant="outline" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
+                        <Button type="submit" variant="outline" size="xl" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
                             {msg("recovery-codes-action-cancel")}
                         </Button>
                     </div>
                 ) : (
-                    <Button type="submit" className="w-full" id="saveRecoveryAuthnCodesBtn" disabled>
+                    <Button type="submit" size="xl" className="w-full" id="saveRecoveryAuthnCodesBtn" disabled>
                         {msgStr("recovery-codes-action-complete")}
                     </Button>
                 )}

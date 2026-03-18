@@ -100,9 +100,11 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                             <span className="text-destructive">*</span>
                         </div>
                         <Input
+                            variant="secondary"
                             type="text"
                             id="totp"
                             name="totp"
+                            size="xl"
                             autoComplete="off"
                             aria-invalid={messagesPerField.existsError("totp")}
                         />
@@ -126,9 +128,11 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                             {totp.otpCredentials.length >= 1 && <span className="text-destructive">*</span>}
                         </div>
                         <Input
+                            variant="secondary"
                             type="text"
                             id="userLabel"
                             name="userLabel"
+                            size="xl"
                             autoComplete="off"
                             aria-invalid={messagesPerField.existsError("userLabel")}
                         />
@@ -148,15 +152,15 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
 
                     {isAppInitiatedAction ? (
                         <div className="flex gap-2">
-                            <Button type="submit" id="saveTOTPBtn">
+                            <Button type="submit" size="xl" id="saveTOTPBtn">
                                 {msgStr("doSubmit")}
                             </Button>
-                            <Button type="submit" variant="outline" id="cancelTOTPBtn" name="cancel-aia" value="true">
+                            <Button type="submit" variant="outline" size="xl" id="cancelTOTPBtn" name="cancel-aia" value="true">
                                 {msg("doCancel")}
                             </Button>
                         </div>
                     ) : (
-                        <Button type="submit" className="w-full" id="saveTOTPBtn">
+                        <Button type="submit" size="xl" className="w-full" id="saveTOTPBtn">
                             {msgStr("doSubmit")}
                         </Button>
                     )}

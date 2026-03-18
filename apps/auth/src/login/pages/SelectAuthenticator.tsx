@@ -21,6 +21,7 @@ export default function SelectAuthenticator(props: { kcContext: Extract<KcContex
                     <Button
                         key={i}
                         variant="outline"
+                        size="xl"
                         className="flex h-auto w-full items-center justify-start gap-4 p-4 text-left"
                         type="submit"
                         name="authenticationExecution"

@@ -25,8 +25,10 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                 <div className="space-y-2">
                     <Label htmlFor="firstName">{msg("firstName")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="firstName"
                         name="firstName"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.firstName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("firstName")}
                     />
@@ -38,8 +40,10 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                 <div className="space-y-2">
                     <Label htmlFor="lastName">{msg("lastName")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="lastName"
                         name="lastName"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.lastName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("lastName")}
                     />
@@ -51,9 +55,11 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                 <div className="space-y-2">
                     <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="email"
                         name="email"
                         type="email"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
                     />
@@ -65,6 +71,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                 <div className="flex items-center gap-2">
                     <Button
                         type="submit"
+                        size="xl"
                         className={isAppInitiatedAction ? "" : "w-full"}
                     >
                         {msgStr("doSubmit")}
@@ -72,6 +79,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                     {isAppInitiatedAction && (
                         <Button
                             variant="outline"
+                            size="xl"
                             type="submit"
                             name="cancel-aia"
                             value="true"

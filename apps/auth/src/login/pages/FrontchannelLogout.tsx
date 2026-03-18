@@ -51,7 +51,7 @@ export default function FrontchannelLogout(props: { kcContext: Extract<KcContext
                     ))}
                 </ul>
                 {logout.logoutRedirectUri !== undefined && (
-                    <Button asChild>
+                    <Button size="xl" asChild>
                         <a id="continue" href={logout.logoutRedirectUri}>
                             {msg("doContinue")}
                         </a>

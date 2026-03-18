@@ -26,9 +26,11 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                 <div className="space-y-2">
                     <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="email"
                         name="email"
                         type="email"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
                     />
@@ -47,6 +49,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                 <div className="flex items-center gap-2">
                     <Button
                         type="submit"
+                        size="xl"
                         className={isAppInitiatedAction ? "" : "w-full"}
                     >
                         {msgStr("doSubmit")}
@@ -54,6 +57,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                     {isAppInitiatedAction && (
                         <Button
                             variant="outline"
+                            size="xl"
                             type="submit"
                             name="cancel-aia"
                             value="true"

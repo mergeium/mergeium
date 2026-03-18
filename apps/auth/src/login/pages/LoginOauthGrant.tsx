@@ -67,10 +67,10 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
                 <form action={url.oauthAction} method="POST">
                     <input type="hidden" name="code" value={oauth.code} />
                     <div className="flex items-center gap-2">
-                        <Button name="accept" id="kc-login" type="submit">
+                        <Button name="accept" id="kc-login" type="submit" size="xl">
                             {msgStr("doYes")}
                         </Button>
-                        <Button variant="outline" name="cancel" id="kc-cancel" type="submit">
+                        <Button variant="outline" size="xl" name="cancel" id="kc-cancel" type="submit">
                             {msgStr("doNo")}
                         </Button>
                     </div>

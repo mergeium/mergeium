@@ -47,7 +47,7 @@ export default function WebauthnRegister(props: { kcContext: Extract<KcContext, 
 
             {!isSetRetry && isAppInitiatedAction && (
                 <form action={url.loginAction} id="kc-webauthn-settings-form" method="post" className="mt-2">
-                    <Button type="submit" variant="outline" className="w-full" id="cancelWebAuthnAIA" name="cancel-aia" value="true">
+                    <Button type="submit" variant="outline" size="xl" className="w-full" id="cancelWebAuthnAIA" name="cancel-aia" value="true">
                         {msg("doCancel")}
                     </Button>
                 </form>

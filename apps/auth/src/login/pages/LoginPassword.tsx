@@ -56,10 +56,12 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                             <Label htmlFor="password">{msg("password")}</Label>
                             <PasswordWrapper i18n={i18n} passwordInputId="password">
                                 <Input
+                                    variant="secondary"
                                     tabIndex={2}
                                     id="password"
                                     name="password"
                                     type="password"
+                                    size="xl"
                                     autoFocus
                                     autoComplete="on"
                                     aria-invalid={messagesPerField.existsError("username", "password")}
@@ -96,6 +98,7 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                                 name="login"
                                 id="kc-login"
                                 type="submit"
+                                size="xl"
                                 className="w-full"
                             >
                                 {msgStr("doLogIn")}
@@ -128,6 +131,7 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                             id={webAuthnButtonId}
                             type="button"
                             variant="outline"
+                            size="xl"
                             className="w-full"
                         >
                             {msgStr("passkey-doAuthenticate")}

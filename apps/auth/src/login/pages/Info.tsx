@@ -52,14 +52,14 @@ export default function Info(props: { kcContext: Extract<KcContext, { pageId: "i
 
                     if (pageRedirectUri) {
                         return (
-                            <Button variant="outline" asChild>
+                            <Button variant="outline" size="xl" asChild>
                                 <a href={pageRedirectUri}>{msg("backToApplication")}</a>
                             </Button>
                         );
                     }
                     if (actionUri) {
                         return (
-                            <Button variant="outline" asChild>
+                            <Button variant="outline" size="xl" asChild>
                                 <a href={actionUri}>{msg("proceedWithAction")}</a>
                             </Button>
                         );
@@ -67,7 +67,7 @@ export default function Info(props: { kcContext: Extract<KcContext, { pageId: "i
 
                     if (client.baseUrl) {
                         return (
-                            <Button variant="outline" asChild>
+                            <Button variant="outline" size="xl" asChild>
                                 <a href={client.baseUrl}>{msg("backToApplication")}</a>
                             </Button>
                         );

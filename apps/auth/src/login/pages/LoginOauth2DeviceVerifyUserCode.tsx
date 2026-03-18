@@ -28,16 +28,18 @@ export default function LoginOauth2DeviceVerifyUserCode(
                 <div className="space-y-2">
                     <Label htmlFor="device-user-code">{msg("verifyOAuth2DeviceUserCode")}</Label>
                     <Input
+                        variant="secondary"
                         id="device-user-code"
                         name="device_user_code"
                         autoComplete="off"
                         type="text"
+                        size="xl"
                         autoFocus
                     />
                 </div>
 
                 <div>
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" size="xl" className="w-full">
                         {msgStr("doSubmit")}
                     </Button>
                 </div>

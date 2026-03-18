@@ -37,7 +37,7 @@ export default function SamlPostForm(props: { kcContext: Extract<KcContext, { pa
                     {samlPost.relayState && <input type="hidden" name="RelayState" value={samlPost.relayState} />}
                     <noscript>
                         <p className="text-sm text-muted-foreground">{msg("saml.post-form.js-disabled")}</p>
-                        <Button type="submit">{msgStr("doContinue")}</Button>
+                        <Button type="submit" size="xl">{msgStr("doContinue")}</Button>
                     </noscript>
                 </form>
             </div>

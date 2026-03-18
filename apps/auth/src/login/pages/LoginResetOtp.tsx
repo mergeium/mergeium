@@ -35,7 +35,7 @@ export default function LoginResetOtp(props: { kcContext: Extract<KcContext, { p
                     ))}
                 </RadioGroup>
 
-                <Button type="submit" className="w-full" id="kc-otp-reset-form-submit">
+                <Button type="submit" size="xl" className="w-full" id="kc-otp-reset-form-submit">
                     {msgStr("doSubmit")}
                 </Button>
             </form>

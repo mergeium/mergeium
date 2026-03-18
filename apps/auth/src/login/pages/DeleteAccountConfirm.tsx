@@ -24,11 +24,11 @@ export default function DeleteAccountConfirm(props: { kcContext: Extract<KcConte
                 </ul>
                 <p className="text-sm font-medium">{msg("finalDeletionConfirmation")}</p>
                 <div className="flex gap-2">
-                    <Button type="submit" variant="destructive">
+                    <Button type="submit" size="xl" variant="destructive">
                         {msgStr("doConfirmDelete")}
                     </Button>
                     {triggered_from_aia && (
-                        <Button type="submit" name="cancel-aia" value="true" variant="outline">
+                        <Button type="submit" size="xl" name="cancel-aia" value="true" variant="outline">
                             {msgStr("doCancel")}
                         </Button>
                     )}

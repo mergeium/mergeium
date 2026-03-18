@@ -115,8 +115,10 @@ export default function LoginPasskeysConditionalAuthenticate(
                                     <div className="space-y-2">
                                         <Label htmlFor="username">{msg("passkey-autofill-select")}</Label>
                                         <Input
+                                            variant="secondary"
                                             tabIndex={1}
                                             id="username"
+                                            size="xl"
                                             aria-invalid={messagesPerField.existsError("username")}
                                             name="username"
                                             defaultValue={login.username ?? ""}

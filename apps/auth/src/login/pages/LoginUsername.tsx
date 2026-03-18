@@ -53,7 +53,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                             <h2 className="text-center text-sm font-medium text-muted-foreground">{msg("identity-provider-login-label")}</h2>
                             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                 {social.providers.map((...[p]) => (
-                                    <Button key={p.alias} variant="outline" className="w-full" asChild>
+                                    <Button key={p.alias} variant="outline" size="xl" className="w-full" asChild>
                                         <a id={`social-${p.alias}`} href={p.loginUrl}>
                                             {p.iconClasses && <i className={p.iconClasses} aria-hidden="true" />}
                                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(p.displayName) }} />
@@ -89,11 +89,13 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                               : msg("email")}
                                     </Label>
                                     <Input
+                                        variant="secondary"
                                         tabIndex={2}
                                         id="username"
                                         name="username"
                                         defaultValue={login.username ?? ""}
                                         type="text"
+                                        size="xl"
                                         autoFocus
                                         autoComplete={enableWebAuthnConditionalUI ? "username webauthn" : "username"}
                                         aria-invalid={messagesPerField.existsError("username")}
@@ -131,6 +133,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                     name="login"
                                     id="kc-login"
                                     type="submit"
+                                    size="xl"
                                     className="w-full"
                                 >
                                     {msgStr("doLogIn")}
@@ -164,6 +167,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                             id={webAuthnButtonId}
                             type="button"
                             variant="outline"
+                            size="xl"
                             className="w-full"
                         >
                             {msgStr("passkey-doAuthenticate")}

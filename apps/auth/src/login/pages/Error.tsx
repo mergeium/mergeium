@@ -21,7 +21,7 @@ export default function Error(props: { kcContext: Extract<KcContext, { pageId: "
             <div className="space-y-4">
                 <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
                 {!skipLink && client !== undefined && client.baseUrl !== undefined && (
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" size="xl" asChild>
                         <a href={client.baseUrl}>{msg("backToApplication")}</a>
                     </Button>
                 )}

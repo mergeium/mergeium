@@ -32,9 +32,11 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
                               : msg("email")}
                     </Label>
                     <Input
+                        variant="secondary"
                         type="text"
                         id="username"
                         name="username"
+                        size="xl"
                         autoFocus
                         defaultValue={auth.attemptedUsername ?? ""}
                         aria-invalid={messagesPerField.existsError("username")}
@@ -54,7 +56,7 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
                     <Button variant="link" size="sm" className="px-0" asChild>
                         <a href={url.loginUrl}>{msg("backToLogin")}</a>
                     </Button>
-                    <Button type="submit">{msgStr("doSubmit")}</Button>
+                    <Button type="submit" size="xl">{msgStr("doSubmit")}</Button>
                 </div>
             </form>
         </Template>

@@ -83,6 +83,7 @@ export default function Login(props: {
                     <Button
                       key={p.alias}
                       variant="outline"
+                      size="xl"
                       className="w-full"
                       asChild
                     >
@@ -127,11 +128,13 @@ export default function Login(props: {
                         : msg("email")}
                   </Label>
                   <Input
+                    variant="secondary"
                     tabIndex={2}
                     id="username"
                     name="username"
                     defaultValue={login.username ?? ""}
                     type="text"
+                    size="xl"
                     autoFocus
                     autoComplete={
                       enableWebAuthnConditionalUI
@@ -165,10 +168,12 @@ export default function Login(props: {
                 <Label htmlFor="password">{msg("password")}</Label>
                 <PasswordWrapper i18n={i18n} passwordInputId="password">
                   <Input
+                    variant="secondary"
                     tabIndex={3}
                     id="password"
                     name="password"
                     type="password"
+                    size="xl"
                     autoComplete="current-password"
                     aria-invalid={messagesPerField.existsError(
                       "username",
@@ -237,6 +242,7 @@ export default function Login(props: {
                   name="login"
                   id="kc-login"
                   type="submit"
+                  size="xl"
                   className="w-full"
                 >
                   {msgStr("doLogIn")}
@@ -281,6 +287,7 @@ export default function Login(props: {
               id={webAuthnButtonId}
               type="button"
               variant="outline"
+              size="xl"
               className="w-full"
             >
               {msgStr("passkey-doAuthenticate")}

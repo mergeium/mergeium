@@ -17,6 +17,7 @@ export default function LoginIdpLinkConfirm(props: { kcContext: Extract<KcContex
                     <Button
                         type="submit"
                         variant="outline"
+                        size="xl"
                         className="w-full"
                         name="submitAction"
                         id="updateProfile"
@@ -27,6 +28,7 @@ export default function LoginIdpLinkConfirm(props: { kcContext: Extract<KcContex
                     <Button
                         type="submit"
                         variant="outline"
+                        size="xl"
                         className="w-full"
                         name="submitAction"
                         id="linkAccount"

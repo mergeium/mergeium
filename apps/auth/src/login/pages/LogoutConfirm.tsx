@@ -21,13 +21,14 @@ export default function LogoutConfirm(props: { kcContext: Extract<KcContext, { p
                         type="submit"
                         name="confirmLogout"
                         id="kc-logout"
+                        size="xl"
                         className="w-full"
                     >
                         {msgStr("doLogout")}
                     </Button>
                 </form>
                 {!logoutConfirm.skipLink && client.baseUrl && (
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" size="xl" asChild>
                         <a href={client.baseUrl}>{msg("backToApplication")}</a>
                     </Button>
                 )}

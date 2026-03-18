@@ -48,6 +48,7 @@ export default function SelectOrganization(props: { kcContext: Extract<KcContext
                                 key={alias}
                                 id={`organization-${alias}`}
                                 variant="outline"
+                                size="xl"
                                 className="h-auto w-full justify-start p-4"
                                 type="button"
                                 onClick={onOrganizationClick(alias)}

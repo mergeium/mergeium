@@ -22,6 +22,7 @@ export default function LoginIdpLinkConfirmOverride(props: { kcContext: Extract<
                 <Button
                     type="submit"
                     variant="outline"
+                    size="xl"
                     className="w-full"
                     name="submitAction"
                     id="confirmOverride"

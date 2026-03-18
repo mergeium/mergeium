@@ -50,10 +50,12 @@ export default function LoginOtp(props: { kcContext: Extract<KcContext, { pageId
                 <div className="space-y-2">
                     <Label htmlFor="otp">{msg("loginOtpOneTime")}</Label>
                     <Input
+                        variant="secondary"
                         id="otp"
                         name="otp"
                         autoComplete="off"
                         type="text"
+                        size="xl"
                         autoFocus
                         aria-invalid={messagesPerField.existsError("totp")}
                     />
@@ -69,7 +71,7 @@ export default function LoginOtp(props: { kcContext: Extract<KcContext, { pageId
                     )}
                 </div>
 
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" size="xl" className="w-full" disabled={isSubmitting}>
                     {msgStr("doLogIn")}
                 </Button>
             </form>

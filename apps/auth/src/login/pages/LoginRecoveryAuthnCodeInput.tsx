@@ -26,9 +26,11 @@ export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<
                         {msg("auth-recovery-code-prompt", `${recoveryAuthnCodesInputBean.codeNumber}`)}
                     </Label>
                     <Input
+                        variant="secondary"
                         tabIndex={1}
                         id="recoveryCodeInput"
                         name="recoveryCodeInput"
+                        size="xl"
                         aria-invalid={messagesPerField.existsError("recoveryCodeInput")}
                         autoComplete="off"
                         type="text"
@@ -46,7 +48,7 @@ export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<
                     )}
                 </div>
 
-                <Button type="submit" className="w-full" name="login" id="kc-login">
+                <Button type="submit" size="xl" className="w-full" name="login" id="kc-login">
                     {msgStr("doLogIn")}
                 </Button>
             </form>

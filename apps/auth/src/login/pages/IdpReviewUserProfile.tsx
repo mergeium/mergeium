@@ -25,8 +25,10 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                 <div className="space-y-2">
                     <Label htmlFor="firstName">{msg("firstName")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="firstName"
                         name="firstName"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.firstName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("firstName")}
                     />
@@ -38,8 +40,10 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                 <div className="space-y-2">
                     <Label htmlFor="lastName">{msg("lastName")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="lastName"
                         name="lastName"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.lastName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("lastName")}
                     />
@@ -51,9 +55,11 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                 <div className="space-y-2">
                     <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
+                        variant="secondary"
                         id="email"
                         name="email"
                         type="email"
+                        size="xl"
                         defaultValue={profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
                     />
@@ -62,7 +68,7 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                     )}
                 </div>
 
-                <Button type="submit" className="w-full">
+                <Button type="submit" size="xl" className="w-full">
                     {msgStr("doSubmit")}
                 </Button>
             </form>
