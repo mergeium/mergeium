@@ -33,7 +33,7 @@ export default function FrontchannelLogout(props: { kcContext: Extract<KcContext
             documentTitle={msgStr("frontchannel-logout.title")}
             headerNode={msg("frontchannel-logout.title")}
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <p className="text-sm text-muted-foreground">{msg("frontchannel-logout.message")}</p>
                 <Separator />
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">

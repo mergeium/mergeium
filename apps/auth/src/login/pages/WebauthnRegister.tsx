@@ -27,7 +27,7 @@ export default function WebauthnRegister(props: { kcContext: Extract<KcContext, 
             i18n={i18n}
             headerNode={msg("webauthn-registration-title")}
         >
-            <form id="register" action={url.loginAction} method="post" className="space-y-4">
+            <form id="register" action={url.loginAction} method="post" className="space-y-3">
                 <div>
                     <input type="hidden" id="clientDataJSON" name="clientDataJSON" />
                     <input type="hidden" id="attestationObject" name="attestationObject" />

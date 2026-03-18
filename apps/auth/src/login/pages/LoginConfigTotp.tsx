@@ -93,7 +93,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                     </li>
                 </ol>
 
-                <form action={url.loginAction} id="kc-totp-settings-form" method="post" className="mt-6 space-y-4">
+                <form action={url.loginAction} id="kc-totp-settings-form" method="post" className="mt-6 space-y-3">
                     <div className="space-y-2">
                         <Input
                             variant="secondary"
@@ -108,7 +108,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                         {messagesPerField.existsError("totp") && (
                             <span
                                 id="input-error-otp-code"
-                                className="text-sm text-destructive"
+                                className="text-xs text-destructive"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: kcSanitize(messagesPerField.get("totp"))
@@ -133,7 +133,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                         {messagesPerField.existsError("userLabel") && (
                             <span
                                 id="input-error-otp-label"
-                                className="text-sm text-destructive"
+                                className="text-xs text-destructive"
                                 aria-live="polite"
                                 dangerouslySetInnerHTML={{
                                     __html: kcSanitize(messagesPerField.get("userLabel"))
@@ -144,20 +144,16 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
 
                     <LogoutOtherSessions i18n={i18n} />
 
-                    {isAppInitiatedAction ? (
-                        <div className="flex gap-2">
-                            <Button type="submit" size="xl" id="saveTOTPBtn">
-                                {msgStr("doSubmit")}
-                            </Button>
-                            <Button type="submit" variant="outline" size="xl" id="cancelTOTPBtn" name="cancel-aia" value="true">
-                                {msg("doCancel")}
-                            </Button>
-                        </div>
-                    ) : (
-                        <Button type="submit" size="xl" className="w-full" id="saveTOTPBtn">
+                    <div className="flex gap-2">
+                        <Button type="submit" size="xl" className="flex-1 w-full" id="saveTOTPBtn">
                             {msgStr("doSubmit")}
                         </Button>
-                    )}
+                        {isAppInitiatedAction && (
+                            <Button type="submit" variant="outline" size="xl" className="flex-1 w-full" id="cancelTOTPBtn" name="cancel-aia" value="true">
+                                {msg("doCancel")}
+                            </Button>
+                        )}
+                    </div>
                 </form>
             </>
         </Template>

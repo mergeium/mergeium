@@ -17,10 +17,10 @@ export default function Terms(props: { kcContext: Extract<KcContext, { pageId: "
             displayMessage={false}
             headerNode={msg("termsTitle")}
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <div className="text-sm text-muted-foreground">{msg("termsText")}</div>
                 <form className="flex gap-2" action={url.loginAction} method="POST">
-                    <Button type="submit" size="xl" name="accept" id="kc-accept">
+                    <Button type="submit" size="xl" className="w-full" name="accept" id="kc-accept">
                         {msgStr("doAccept")}
                     </Button>
                     <Button type="submit" size="xl" name="cancel" id="kc-decline" variant="outline">

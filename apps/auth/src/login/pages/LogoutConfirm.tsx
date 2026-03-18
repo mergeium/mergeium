@@ -12,7 +12,7 @@ export default function LogoutConfirm(props: { kcContext: Extract<KcContext, { p
 
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("logoutConfirmTitle")}>
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <p className="text-sm text-muted-foreground">{msg("logoutConfirmHeader")}</p>
                 <form action={url.logoutConfirmAction} method="POST">
                     <input type="hidden" name="session_code" value={logoutConfirm.code} />
@@ -28,9 +28,9 @@ export default function LogoutConfirm(props: { kcContext: Extract<KcContext, { p
                     </Button>
                 </form>
                 {!logoutConfirm.skipLink && client.baseUrl && (
-                    <Button variant="outline" size="xl" asChild>
-                        <a href={client.baseUrl}>{msg("backToApplication")}</a>
-                    </Button>
+                    <p className="text-center text-sm text-muted-foreground">
+                        <a href={client.baseUrl} className="underline hover:text-foreground">{msg("backToApplication")}</a>
+                    </p>
                 )}
             </div>
         </Template>

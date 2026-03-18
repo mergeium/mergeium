@@ -36,7 +36,7 @@ export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<
                     {messagesPerField.existsError("recoveryCodeInput") && (
                         <span
                             id="input-error"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             aria-live="polite"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(messagesPerField.get("recoveryCodeInput"))

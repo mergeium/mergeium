@@ -17,7 +17,7 @@ export default function WebauthnError(props: { kcContext: Extract<KcContext, { p
             displayMessage
             headerNode={msg("webauthn-error-title")}
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <form id="kc-error-credential-form" action={url.loginAction} method="post">
                     <input type="hidden" id="executionValue" name="authenticationExecution" />
                     <input type="hidden" id="isSetRetry" name="isSetRetry" />

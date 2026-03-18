@@ -68,27 +68,23 @@ export default function LoginRecoveryAuthnCodeConfig(props: { kcContext: Extract
                 </Label>
             </div>
 
-            <form action={kcContext.url.loginAction} id="kc-recovery-codes-settings-form" method="post" className="mt-6 space-y-4">
+            <form action={kcContext.url.loginAction} id="kc-recovery-codes-settings-form" method="post" className="mt-6 space-y-3">
                 <input type="hidden" name="generatedRecoveryAuthnCodes" value={recoveryAuthnCodesConfigBean.generatedRecoveryAuthnCodesAsString} />
                 <input type="hidden" name="generatedAt" value={recoveryAuthnCodesConfigBean.generatedAt} />
                 <input type="hidden" id="userLabel" name="userLabel" value={msgStr("recovery-codes-label-default")} />
 
                 <LogoutOtherSessions i18n={i18n} />
 
-                {isAppInitiatedAction ? (
-                    <div className="flex gap-2">
-                        <Button type="submit" size="xl" id="saveRecoveryAuthnCodesBtn" disabled>
-                            {msgStr("recovery-codes-action-complete")}
-                        </Button>
-                        <Button type="submit" variant="outline" size="xl" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
-                            {msg("recovery-codes-action-cancel")}
-                        </Button>
-                    </div>
-                ) : (
-                    <Button type="submit" size="xl" className="w-full" id="saveRecoveryAuthnCodesBtn" disabled>
+                <div className="flex gap-2">
+                    <Button type="submit" size="xl" className="flex-1 w-full" id="saveRecoveryAuthnCodesBtn" disabled>
                         {msgStr("recovery-codes-action-complete")}
                     </Button>
-                )}
+                    {isAppInitiatedAction && (
+                        <Button type="submit" variant="outline" size="xl" className="flex-1 w-full" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
+                            {msg("recovery-codes-action-cancel")}
+                        </Button>
+                    )}
+                </div>
             </form>
         </Template>
     );

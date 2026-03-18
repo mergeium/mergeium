@@ -7,7 +7,6 @@ import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
-import { Separator } from "@mergeium/ui/components/separator";
 import Template from "../Template";
 
 export default function LoginUsername(props: { kcContext: Extract<KcContext, { pageId: "login-username.ftl" }>; i18n: I18n }) {
@@ -48,12 +47,11 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
             socialProvidersNode={
                 <>
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-                        <div id="kc-social-providers" className="space-y-4">
-                            <Separator />
-                            <h2 className="text-center text-sm font-medium text-muted-foreground">{msg("identity-provider-login-label")}</h2>
+                        <div id="kc-social-providers" className="space-y-3 mt-4">
+                            <h2 className="text-center text-sm text-muted-foreground">{msg("identity-provider-login-label")}</h2>
                             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                                 {social.providers.map((...[p]) => (
-                                    <Button key={p.alias} variant="outline" size="xl" className="w-full" asChild>
+                                    <Button key={p.alias} variant="secondary" size="xl" className="w-full" asChild>
                                         <a id={`social-${p.alias}`} href={p.loginUrl}>
                                             {p.iconClasses && <i className={p.iconClasses} aria-hidden="true" />}
                                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(p.displayName) }} />
@@ -77,7 +75,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                             }}
                             action={url.loginAction}
                             method="post"
-                            className="space-y-4"
+                            className="space-y-3"
                         >
                             {!usernameHidden && (
                                 <div className="space-y-2">
@@ -101,30 +99,26 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                         aria-invalid={messagesPerField.existsError("username")}
                                     />
                                     {messagesPerField.existsError("username") && (
-                                        <span id="input-error" className="text-sm text-destructive" aria-live="polite">
+                                        <span id="input-error" className="text-xs text-destructive" aria-live="polite">
                                             {messagesPerField.getFirstError("username")}
                                         </span>
                                     )}
                                 </div>
                             )}
 
-                            <div className="flex items-center justify-between">
-                                <div id="kc-form-options">
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="flex items-center gap-2">
-                                            <Checkbox
-                                                tabIndex={3}
-                                                id="rememberMe"
-                                                name="rememberMe"
-                                                defaultChecked={!!login.rememberMe}
-                                            />
-                                            <Label htmlFor="rememberMe" className="text-sm font-normal">
-                                                {msg("rememberMe")}
-                                            </Label>
-                                        </div>
-                                    )}
+                            {realm.rememberMe && !usernameHidden && (
+                                <div className="flex items-center gap-2">
+                                    <Checkbox
+                                        tabIndex={3}
+                                        id="rememberMe"
+                                        name="rememberMe"
+                                        defaultChecked={!!login.rememberMe}
+                                    />
+                                    <Label htmlFor="rememberMe" className="text-sm font-normal text-muted-foreground">
+                                        {msg("rememberMe")}
+                                    </Label>
                                 </div>
-                            </div>
+                            )}
 
                             <div id="kc-form-buttons">
                                 <Button

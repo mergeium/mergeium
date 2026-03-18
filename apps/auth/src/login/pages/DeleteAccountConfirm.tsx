@@ -13,7 +13,7 @@ export default function DeleteAccountConfirm(props: { kcContext: Extract<KcConte
 
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("deleteAccountConfirm")}>
-            <form action={url.loginAction} method="post" className="space-y-4">
+            <form action={url.loginAction} method="post" className="space-y-3">
                 <Alert variant="destructive">
                     <AlertTitle>{msg("irreversibleAction")}</AlertTitle>
                 </Alert>
@@ -24,11 +24,11 @@ export default function DeleteAccountConfirm(props: { kcContext: Extract<KcConte
                 </ul>
                 <p className="text-sm font-medium">{msg("finalDeletionConfirmation")}</p>
                 <div className="flex gap-2">
-                    <Button type="submit" size="xl" variant="destructive">
+                    <Button type="submit" size="xl" className="flex-1 w-full" variant="destructive">
                         {msgStr("doConfirmDelete")}
                     </Button>
                     {triggered_from_aia && (
-                        <Button type="submit" size="xl" name="cancel-aia" value="true" variant="outline">
+                        <Button type="submit" size="xl" className="flex-1 w-full" name="cancel-aia" value="true" variant="outline">
                             {msgStr("doCancel")}
                         </Button>
                     )}

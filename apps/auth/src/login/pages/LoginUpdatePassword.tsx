@@ -21,7 +21,7 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
             displayMessage={!messagesPerField.existsError("password", "password-confirm")}
             headerNode={msg("updatePasswordTitle")}
         >
-            <form id="kc-passwd-update-form" className="space-y-4" action={url.loginAction} method="post">
+            <form id="kc-passwd-update-form" className="space-y-3" action={url.loginAction} method="post">
                 <div className="space-y-2">
                         <Input
                             variant="secondary"
@@ -37,7 +37,7 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                     {messagesPerField.existsError("password") && (
                         <span
                             id="input-error-password"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             aria-live="polite"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(messagesPerField.get("password"))
@@ -60,7 +60,7 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                     {messagesPerField.existsError("password-confirm") && (
                         <span
                             id="input-error-password-confirm"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             aria-live="polite"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(messagesPerField.get("password-confirm"))
@@ -71,12 +71,12 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
 
                 <LogoutOtherSessions i18n={i18n} />
 
-                <div className="flex items-center gap-2">
-                    <Button type="submit" size="xl" className={isAppInitiatedAction ? "" : "w-full"}>
+                <div className="flex gap-2">
+                    <Button type="submit" size="xl" className="flex-1 w-full">
                         {msgStr("doSubmit")}
                     </Button>
                     {isAppInitiatedAction && (
-                        <Button variant="outline" size="xl" type="submit" name="cancel-aia" value="true">
+                        <Button variant="outline" size="xl" className="flex-1 w-full" type="submit" name="cancel-aia" value="true">
                             {msg("doCancel")}
                         </Button>
                     )}

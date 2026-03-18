@@ -9,7 +9,7 @@ import type { I18n } from "../i18n";
 import { useScript } from "./LoginPassword.useScript";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
-import { Separator } from "@mergeium/ui/components/separator";
+
 import Template from "../Template";
 
 export default function LoginPassword(props: { kcContext: Extract<KcContext, { pageId: "login-password.ftl" }>; i18n: I18n }) {
@@ -46,10 +46,9 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                         }}
                         action={url.loginAction}
                         method="post"
-                        className="space-y-4"
+                        className="space-y-3"
                     >
                         <div className="space-y-2">
-                            <Separator />
                                 <Input
                                     variant="secondary"
                                     tabIndex={2}
@@ -65,7 +64,7 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                             {messagesPerField.existsError("password") && (
                                 <span
                                     id="input-error-password"
-                                    className="text-sm text-destructive"
+                                    className="text-xs text-destructive"
                                     aria-live="polite"
                                     dangerouslySetInnerHTML={{
                                         __html: kcSanitize(messagesPerField.get("password"))
@@ -74,17 +73,13 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                             )}
                         </div>
 
-                        <div className="flex items-center justify-between">
-                            <div id="kc-form-options">
-                                {realm.resetPasswordAllowed && (
-                                    <Button variant="link" size="sm" className="px-0" asChild>
-                                        <a tabIndex={5} href={url.loginResetCredentialsUrl}>
-                                            {msg("doForgotPassword")}
-                                        </a>
-                                    </Button>
-                                )}
-                            </div>
-                        </div>
+                        {realm.resetPasswordAllowed && (
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a tabIndex={5} href={url.loginResetCredentialsUrl} className="underline hover:text-foreground">
+                                    {msg("doForgotPassword")}
+                                </a>
+                            </p>
+                        )}
 
                         <div id="kc-form-buttons">
                             <Button

@@ -21,7 +21,7 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
             infoNode={realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}
             headerNode={msg("emailForgotTitle")}
         >
-            <form id="kc-reset-password-form" action={url.loginAction} method="post" className="space-y-4">
+            <form id="kc-reset-password-form" action={url.loginAction} method="post" className="space-y-3">
                 <div className="space-y-2">
                     <Input
                         variant="secondary"
@@ -43,7 +43,7 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
                     {messagesPerField.existsError("username") && (
                         <span
                             id="input-error-username"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             aria-live="polite"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(messagesPerField.get("username"))
@@ -51,12 +51,10 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
                         />
                     )}
                 </div>
-                <div className="flex items-center justify-between">
-                    <Button variant="link" size="sm" className="px-0" asChild>
-                        <a href={url.loginUrl}>{msg("backToLogin")}</a>
-                    </Button>
-                    <Button type="submit" size="xl">{msgStr("doSubmit")}</Button>
-                </div>
+                <Button type="submit" size="xl" className="w-full">{msgStr("doSubmit")}</Button>
+                <p className="text-center text-sm text-muted-foreground">
+                    <a href={url.loginUrl} className="underline hover:text-foreground">{msg("backToLogin")}</a>
+                </p>
             </form>
         </Template>
     );

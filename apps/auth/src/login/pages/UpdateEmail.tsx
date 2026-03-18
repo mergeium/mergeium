@@ -22,7 +22,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
             displayRequiredFields
             headerNode={msg("updateEmailTitle")}
         >
-            <form id="kc-update-email-form" className="space-y-4" action={url.loginAction} method="post">
+            <form id="kc-update-email-form" className="space-y-3" action={url.loginAction} method="post">
                 <div className="space-y-2">
                     <Input
                         variant="secondary"
@@ -46,11 +46,11 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                     </Label>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex gap-2">
                     <Button
                         type="submit"
                         size="xl"
-                        className={isAppInitiatedAction ? "" : "w-full"}
+                        className="flex-1 w-full"
                     >
                         {msgStr("doSubmit")}
                     </Button>
@@ -58,6 +58,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                         <Button
                             variant="outline"
                             size="xl"
+                            className="flex-1 w-full"
                             type="submit"
                             name="cancel-aia"
                             value="true"

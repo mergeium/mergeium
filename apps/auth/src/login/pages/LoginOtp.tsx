@@ -62,7 +62,7 @@ export default function LoginOtp(props: { kcContext: Extract<KcContext, { pageId
                     {messagesPerField.existsError("totp") && (
                         <span
                             id="input-error-otp-code"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             aria-live="polite"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(messagesPerField.get("totp"))

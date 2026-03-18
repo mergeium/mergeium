@@ -1,7 +1,6 @@
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Button } from "@mergeium/ui/components/button";
 import Template from "../Template";
 
 export default function Info(props: { kcContext: Extract<KcContext, { pageId: "info.ftl" }>; i18n: I18n }) {
@@ -24,7 +23,7 @@ export default function Info(props: { kcContext: Extract<KcContext, { pageId: "i
                 />
             }
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <p
                     className="text-sm text-muted-foreground"
                     dangerouslySetInnerHTML={{
@@ -52,24 +51,24 @@ export default function Info(props: { kcContext: Extract<KcContext, { pageId: "i
 
                     if (pageRedirectUri) {
                         return (
-                            <Button variant="outline" size="xl" asChild>
-                                <a href={pageRedirectUri}>{msg("backToApplication")}</a>
-                            </Button>
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a href={pageRedirectUri} className="underline hover:text-foreground">{msg("backToApplication")}</a>
+                            </p>
                         );
                     }
                     if (actionUri) {
                         return (
-                            <Button variant="outline" size="xl" asChild>
-                                <a href={actionUri}>{msg("proceedWithAction")}</a>
-                            </Button>
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a href={actionUri} className="underline hover:text-foreground">{msg("proceedWithAction")}</a>
+                            </p>
                         );
                     }
 
                     if (client.baseUrl) {
                         return (
-                            <Button variant="outline" size="xl" asChild>
-                                <a href={client.baseUrl}>{msg("backToApplication")}</a>
-                            </Button>
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a href={client.baseUrl} className="underline hover:text-foreground">{msg("backToApplication")}</a>
+                            </p>
                         );
                     }
                 })()}

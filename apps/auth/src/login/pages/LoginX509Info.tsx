@@ -31,11 +31,11 @@ export default function LoginX509Info(props: { kcContext: Extract<KcContext, { p
                 )}
 
                 <div className="flex gap-2">
-                    <Button type="submit" size="xl" name="login" id="kc-login">
+                    <Button type="submit" size="xl" className="flex-1 w-full" name="login" id="kc-login">
                         {msgStr("doContinue")}
                     </Button>
                     {x509.formData.isUserEnabled && (
-                        <Button type="submit" size="xl" variant="outline" name="cancel" id="kc-cancel">
+                        <Button type="submit" size="xl" className="flex-1 w-full" variant="outline" name="cancel" id="kc-cancel">
                             {msgStr("doIgnore")}
                         </Button>
                     )}

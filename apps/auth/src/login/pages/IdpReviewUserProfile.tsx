@@ -20,7 +20,7 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
             displayRequiredFields
             headerNode={msg("loginIdpReviewProfileTitle")}
         >
-            <form id="kc-idp-review-profile-form" className="space-y-4" action={url.loginAction} method="post">
+            <form id="kc-idp-review-profile-form" className="space-y-3" action={url.loginAction} method="post">
                 <div className="space-y-2">
                     <Input
                         variant="secondary"

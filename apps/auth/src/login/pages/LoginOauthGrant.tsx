@@ -22,7 +22,7 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
                 </>
             }
         >
-            <div id="kc-oauth" className="space-y-4">
+            <div id="kc-oauth" className="space-y-3">
                 <h3 className="text-lg font-semibold">{msg("oauthGrantRequest")}</h3>
                 <ul className="list-disc space-y-1 pl-6 text-sm">
                     {oauth.clientScopesRequested.map(clientScope => (
@@ -66,11 +66,11 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
 
                 <form action={url.oauthAction} method="POST">
                     <input type="hidden" name="code" value={oauth.code} />
-                    <div className="flex items-center gap-2">
-                        <Button name="accept" id="kc-login" type="submit" size="xl">
+                    <div className="flex gap-2">
+                        <Button name="accept" id="kc-login" type="submit" size="xl" className="flex-1 w-full">
                             {msgStr("doYes")}
                         </Button>
-                        <Button variant="outline" size="xl" name="cancel" id="kc-cancel" type="submit">
+                        <Button variant="outline" size="xl" className="flex-1 w-full" name="cancel" id="kc-cancel" type="submit">
                             {msgStr("doNo")}
                         </Button>
                     </div>

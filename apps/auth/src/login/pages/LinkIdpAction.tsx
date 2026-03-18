@@ -17,16 +17,16 @@ export default function LinkIdpAction(props: { kcContext: Extract<KcContext, { p
             headerNode={msg("linkIdpActionTitle", idpDisplayName)}
             displayMessage={false}
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 <p className="text-sm text-muted-foreground">
                     {msg("linkIdpActionMessage", idpDisplayName)}
                 </p>
                 <form action={url.loginAction} method="post">
                     <div className="flex gap-2">
-                        <Button type="submit" size="xl" name="continue" id="kc-continue">
+                        <Button type="submit" size="xl" className="flex-1 w-full" name="continue" id="kc-continue">
                             {msgStr("doContinue")}
                         </Button>
-                        <Button type="submit" size="xl" name="cancel-aia" id="kc-cancel" variant="outline">
+                        <Button type="submit" size="xl" className="flex-1 w-full" name="cancel-aia" id="kc-cancel" variant="outline">
                             {msgStr("doCancel")}
                         </Button>
                     </div>

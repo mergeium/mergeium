@@ -37,7 +37,7 @@ export default function WebauthnAuthenticate(props: { kcContext: Extract<KcConte
             }
             headerNode={msg("webauthn-login-title")}
         >
-            <div id="kc-form-webauthn" className="space-y-4">
+            <div id="kc-form-webauthn" className="space-y-3">
                 <form id="webauth" action={url.loginAction} method="post">
                     <input type="hidden" id="clientDataJSON" name="clientDataJSON" />
                     <input type="hidden" id="authenticatorData" name="authenticatorData" />

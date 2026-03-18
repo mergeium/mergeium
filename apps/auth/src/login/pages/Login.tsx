@@ -11,7 +11,6 @@ import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
-import { Separator } from "@mergeium/ui/components/separator";
 import Template from "../Template";
 
 export default function Login(props: {
@@ -71,16 +70,15 @@ export default function Login(props: {
           {realm.password &&
             social?.providers !== undefined &&
             social.providers.length !== 0 && (
-              <div id="kc-social-providers" className="space-y-4">
-                <Separator />
-                <h2 className="text-center text-sm font-medium text-muted-foreground">
+              <div id="kc-social-providers" className="space-y-3 mt-4">
+                <h2 className="text-center text-sm text-muted-foreground">
                   {msg("identity-provider-login-label")}
                 </h2>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {social.providers.map((...[p]) => (
                     <Button
                       key={p.alias}
-                      variant="outline"
+                      variant="secondary"
                       size="xl"
                       className="w-full"
                       asChild
@@ -114,7 +112,7 @@ export default function Login(props: {
               }}
               action={url.loginAction}
               method="post"
-              className="space-y-4"
+              className="space-y-3"
             >
               {!usernameHidden && (
                 <div className="space-y-2">
@@ -147,7 +145,7 @@ export default function Login(props: {
                   {messagesPerField.existsError("username", "password") && (
                     <span
                       id="input-error"
-                      className="text-sm text-destructive"
+                      className="text-xs text-destructive"
                       aria-live="polite"
                       dangerouslySetInnerHTML={{
                         __html: kcSanitize(
@@ -181,7 +179,7 @@ export default function Login(props: {
                   messagesPerField.existsError("username", "password") && (
                     <span
                       id="input-error"
-                      className="text-sm text-destructive"
+                      className="text-xs text-destructive"
                       aria-live="polite"
                       dangerouslySetInnerHTML={{
                         __html: kcSanitize(
@@ -195,8 +193,28 @@ export default function Login(props: {
                   )}
               </div>
 
-              <div className="flex items-center justify-between">
-                <div id="kc-form-options">
+              {realm.rememberMe && !usernameHidden && realm.resetPasswordAllowed ? (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Checkbox
+                      tabIndex={5}
+                      id="rememberMe"
+                      name="rememberMe"
+                      defaultChecked={!!login.rememberMe}
+                    />
+                    <Label
+                      htmlFor="rememberMe"
+                      className="text-sm font-normal text-muted-foreground"
+                    >
+                      {msg("rememberMe")}
+                    </Label>
+                  </div>
+                  <a tabIndex={6} href={url.loginResetCredentialsUrl} className="text-sm text-muted-foreground underline hover:text-foreground">
+                    {msg("doForgotPassword")}
+                  </a>
+                </div>
+              ) : (
+                <>
                   {realm.rememberMe && !usernameHidden && (
                     <div className="flex items-center gap-2">
                       <Checkbox
@@ -207,23 +225,21 @@ export default function Login(props: {
                       />
                       <Label
                         htmlFor="rememberMe"
-                        className="text-sm font-normal"
+                        className="text-sm font-normal text-muted-foreground"
                       >
                         {msg("rememberMe")}
                       </Label>
                     </div>
                   )}
-                </div>
-                <div>
                   {realm.resetPasswordAllowed && (
-                    <Button variant="link" size="sm" className="px-0" asChild>
-                      <a tabIndex={6} href={url.loginResetCredentialsUrl}>
+                    <p className="text-center text-sm text-muted-foreground">
+                      <a tabIndex={6} href={url.loginResetCredentialsUrl} className="underline hover:text-foreground">
                         {msg("doForgotPassword")}
                       </a>
-                    </Button>
+                    </p>
                   )}
-                </div>
-              </div>
+                </>
+              )}
 
               <div id="kc-form-buttons">
                 <input

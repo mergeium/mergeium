@@ -20,7 +20,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
             headerNode={msg("loginProfileTitle")}
             displayMessage={messagesPerField.exists("global")}
         >
-            <form id="kc-update-profile-form" className="space-y-4" action={url.loginAction} method="post">
+            <form id="kc-update-profile-form" className="space-y-3" action={url.loginAction} method="post">
                 <div className="space-y-2">
                     <Input
                         variant="secondary"
@@ -67,11 +67,11 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                     )}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex gap-2">
                     <Button
                         type="submit"
                         size="xl"
-                        className={isAppInitiatedAction ? "" : "w-full"}
+                        className="flex-1 w-full"
                     >
                         {msgStr("doSubmit")}
                     </Button>
@@ -79,6 +79,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                         <Button
                             variant="outline"
                             size="xl"
+                            className="flex-1 w-full"
                             type="submit"
                             name="cancel-aia"
                             value="true"

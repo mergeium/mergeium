@@ -20,7 +20,7 @@ export default function LoginOauth2DeviceVerifyUserCode(
         >
             <form
                 id="kc-user-verify-device-user-code-form"
-                className="space-y-4"
+                className="space-y-3"
                 action={url.oauth2DeviceVerificationAction}
                 method="post"
             >

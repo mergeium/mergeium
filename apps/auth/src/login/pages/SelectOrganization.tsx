@@ -40,7 +40,7 @@ export default function SelectOrganization(props: { kcContext: Extract<KcContext
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={null}>
             <form ref={formRef} action={url.loginAction} method="post">
-                <div id="kc-user-organizations" className="space-y-4">
+                <div id="kc-user-organizations" className="space-y-3">
                     <h2 className="text-lg font-semibold">{msg("organization.select")}</h2>
                     <div className={cn("grid gap-2", shouldDisplayGrid ? "grid-cols-2" : "grid-cols-1")}>
                         {organizations.map(({ alias, name }) => (

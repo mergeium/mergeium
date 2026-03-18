@@ -126,7 +126,7 @@ export default function LoginPasskeysConditionalAuthenticate(
                                             placeholder={msgStr("passkey-autofill-select")}
                                         />
                                         {messagesPerField.existsError("username") && (
-                                            <span id="input-error-username" className="text-sm text-destructive" aria-live="polite">
+                                            <span id="input-error-username" className="text-xs text-destructive" aria-live="polite">
                                                 {messagesPerField.get("username")}
                                             </span>
                                         )}

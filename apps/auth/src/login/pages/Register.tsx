@@ -42,7 +42,7 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields
         >
-            <form id="kc-register-form" className="space-y-4" action={url.registrationAction} method="post">
+            <form id="kc-register-form" className="space-y-3" action={url.registrationAction} method="post">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <Input
@@ -151,28 +151,25 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                     </div>
                 )}
 
-                <div className="flex items-center justify-between">
-                    <Button variant="link" size="sm" className="px-0" asChild>
-                        <a href={url.loginUrl}>{msg("backToLogin")}</a>
+                {recaptchaRequired && !recaptchaVisible && recaptchaAction !== undefined ? (
+                    <Button
+                        className="g-recaptcha w-full"
+                        data-sitekey={recaptchaSiteKey}
+                        data-callback="onSubmitRecaptcha"
+                        data-action={recaptchaAction}
+                        type="submit"
+                        size="xl"
+                    >
+                        {msg("doRegister")}
                     </Button>
-
-                    {recaptchaRequired && !recaptchaVisible && recaptchaAction !== undefined ? (
-                        <Button
-                            className="g-recaptcha"
-                            data-sitekey={recaptchaSiteKey}
-                            data-callback="onSubmitRecaptcha"
-                            data-action={recaptchaAction}
-                            type="submit"
-                            size="xl"
-                        >
-                            {msg("doRegister")}
-                        </Button>
-                    ) : (
-                        <Button type="submit" size="xl">
-                            {msgStr("doRegister")}
-                        </Button>
-                    )}
-                </div>
+                ) : (
+                    <Button type="submit" size="xl" className="w-full">
+                        {msgStr("doRegister")}
+                    </Button>
+                )}
+                <p className="text-center text-sm text-muted-foreground">
+                    <a href={url.loginUrl} className="underline hover:text-foreground">{msg("backToLogin")}</a>
+                </p>
             </form>
         </Template>
     );
@@ -205,7 +202,7 @@ function TermsAcceptance(props: {
                 {messagesPerField.existsError("termsAccepted") && (
                     <span
                         id="input-error-terms-accepted"
-                        className="text-sm text-destructive"
+                        className="text-xs text-destructive"
                         aria-live="polite"
                         dangerouslySetInnerHTML={{ __html: kcSanitize(messagesPerField.get("termsAccepted")) }}
                     />

@@ -16,7 +16,7 @@ export default function Code(props: { kcContext: Extract<KcContext, { pageId: "c
             i18n={i18n}
             headerNode={code.success ? msg("codeSuccessTitle") : msg("codeErrorTitle", code.error)}
         >
-            <div className="space-y-4">
+            <div className="space-y-3">
                 {code.success ? (
                     <>
                         <p className="text-sm text-muted-foreground">{msg("copyCodeInstruction")}</p>
@@ -31,7 +31,7 @@ export default function Code(props: { kcContext: Extract<KcContext, { pageId: "c
                     code.error && (
                         <p
                             id="error"
-                            className="text-sm text-destructive"
+                            className="text-xs text-destructive"
                             dangerouslySetInnerHTML={{
                                 __html: kcSanitize(code.error)
                             }}
