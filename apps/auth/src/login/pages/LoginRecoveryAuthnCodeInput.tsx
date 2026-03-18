@@ -3,7 +3,6 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
-import { Label } from "@mergeium/ui/components/label";
 import Template from "../Template";
 
 export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<KcContext, { pageId: "login-recovery-authn-code-input.ftl" }>; i18n: I18n }) {
@@ -22,9 +21,6 @@ export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<
         >
             <form id="kc-recovery-code-login-form" action={url.loginAction} method="post" className="space-y-6">
                 <div className="space-y-2">
-                    <Label htmlFor="recoveryCodeInput">
-                        {msg("auth-recovery-code-prompt", `${recoveryAuthnCodesInputBean.codeNumber}`)}
-                    </Label>
                     <Input
                         variant="secondary"
                         tabIndex={1}
@@ -35,6 +31,7 @@ export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<
                         autoComplete="off"
                         type="text"
                         autoFocus
+                        placeholder={msgStr("auth-recovery-code-prompt", `${recoveryAuthnCodesInputBean.codeNumber}`)}
                     />
                     {messagesPerField.existsError("recoveryCodeInput") && (
                         <span

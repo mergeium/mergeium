@@ -2,7 +2,6 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import Template from "../Template";
 import { Input } from "@mergeium/ui/components/input";
-import { Label } from "@mergeium/ui/components/label";
 import { Button } from "@mergeium/ui/components/button";
 
 export default function IdpReviewUserProfile(props: { kcContext: Extract<KcContext, { pageId: "idp-review-user-profile.ftl" }>; i18n: I18n }) {
@@ -23,12 +22,12 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
         >
             <form id="kc-idp-review-profile-form" className="space-y-4" action={url.loginAction} method="post">
                 <div className="space-y-2">
-                    <Label htmlFor="firstName">{msg("firstName")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="firstName"
                         name="firstName"
                         size="xl"
+                        placeholder={msgStr("firstName")}
                         defaultValue={profile?.attributesByName?.firstName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("firstName")}
                     />
@@ -38,12 +37,12 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="lastName">{msg("lastName")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="lastName"
                         name="lastName"
                         size="xl"
+                        placeholder={msgStr("lastName")}
                         defaultValue={profile?.attributesByName?.lastName?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("lastName")}
                     />
@@ -53,13 +52,13 @@ export default function IdpReviewUserProfile(props: { kcContext: Extract<KcConte
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="email"
                         name="email"
                         type="email"
                         size="xl"
+                        placeholder={msgStr("email")}
                         defaultValue={profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
                     />

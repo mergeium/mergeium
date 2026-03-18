@@ -81,13 +81,6 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                         >
                             {!usernameHidden && (
                                 <div className="space-y-2">
-                                    <Label htmlFor="username">
-                                        {!realm.loginWithEmailAllowed
-                                            ? msg("username")
-                                            : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
-                                    </Label>
                                     <Input
                                         variant="secondary"
                                         tabIndex={2}
@@ -97,6 +90,13 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                         type="text"
                                         size="xl"
                                         autoFocus
+                                        placeholder={
+                                            !realm.loginWithEmailAllowed
+                                                ? msgStr("username")
+                                                : !realm.registrationEmailAsUsername
+                                                  ? msgStr("usernameOrEmail")
+                                                  : msgStr("email")
+                                        }
                                         autoComplete={enableWebAuthnConditionalUI ? "username webauthn" : "username"}
                                         aria-invalid={messagesPerField.existsError("username")}
                                     />

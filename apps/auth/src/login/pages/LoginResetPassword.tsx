@@ -3,7 +3,6 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
-import { Label } from "@mergeium/ui/components/label";
 import Template from "../Template";
 
 export default function LoginResetPassword(props: { kcContext: Extract<KcContext, { pageId: "login-reset-password.ftl" }>; i18n: I18n }) {
@@ -24,13 +23,6 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
         >
             <form id="kc-reset-password-form" action={url.loginAction} method="post" className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="username">
-                        {!realm.loginWithEmailAllowed
-                            ? msg("username")
-                            : !realm.registrationEmailAsUsername
-                              ? msg("usernameOrEmail")
-                              : msg("email")}
-                    </Label>
                     <Input
                         variant="secondary"
                         type="text"
@@ -38,6 +30,13 @@ export default function LoginResetPassword(props: { kcContext: Extract<KcContext
                         name="username"
                         size="xl"
                         autoFocus
+                        placeholder={
+                            !realm.loginWithEmailAllowed
+                                ? msgStr("username")
+                                : !realm.registrationEmailAsUsername
+                                  ? msgStr("usernameOrEmail")
+                                  : msgStr("email")
+                        }
                         defaultValue={auth.attemptedUsername ?? ""}
                         aria-invalid={messagesPerField.existsError("username")}
                     />

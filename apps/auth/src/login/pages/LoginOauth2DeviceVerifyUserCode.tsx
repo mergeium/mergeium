@@ -2,7 +2,6 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
-import { Label } from "@mergeium/ui/components/label";
 import Template from "../Template";
 
 export default function LoginOauth2DeviceVerifyUserCode(
@@ -26,7 +25,6 @@ export default function LoginOauth2DeviceVerifyUserCode(
                 method="post"
             >
                 <div className="space-y-2">
-                    <Label htmlFor="device-user-code">{msg("verifyOAuth2DeviceUserCode")}</Label>
                     <Input
                         variant="secondary"
                         id="device-user-code"
@@ -35,6 +33,7 @@ export default function LoginOauth2DeviceVerifyUserCode(
                         type="text"
                         size="xl"
                         autoFocus
+                        placeholder={msgStr("verifyOAuth2DeviceUserCode")}
                     />
                 </div>
 

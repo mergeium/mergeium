@@ -45,12 +45,12 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
             <form id="kc-register-form" className="space-y-4" action={url.registrationAction} method="post">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label htmlFor="firstName">{msg("firstName")} <span className="text-destructive">*</span></Label>
                         <Input
                             variant="secondary"
                             id="firstName"
                             name="firstName"
                             size="xl"
+                            placeholder={msgStr("firstName")}
                             defaultValue={kcContext.profile?.attributesByName?.firstName?.value ?? ""}
                             aria-invalid={messagesPerField.existsError("firstName")}
                         />
@@ -59,12 +59,12 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                         )}
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="lastName">{msg("lastName")} <span className="text-destructive">*</span></Label>
                         <Input
                             variant="secondary"
                             id="lastName"
                             name="lastName"
                             size="xl"
+                            placeholder={msgStr("lastName")}
                             defaultValue={kcContext.profile?.attributesByName?.lastName?.value ?? ""}
                             aria-invalid={messagesPerField.existsError("lastName")}
                         />
@@ -75,13 +75,13 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="email"
                         name="email"
                         type="email"
                         size="xl"
+                        placeholder={msgStr("email")}
                         autoComplete="email"
                         defaultValue={kcContext.profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
@@ -93,12 +93,12 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
 
                 {!realm.registrationEmailAsUsername && (
                     <div className="space-y-2">
-                        <Label htmlFor="username">{msg("username")} <span className="text-destructive">*</span></Label>
                         <Input
                             variant="secondary"
                             id="username"
                             name="username"
                             size="xl"
+                            placeholder={msgStr("username")}
                             autoComplete="username"
                             defaultValue={kcContext.profile?.attributesByName?.username?.value ?? ""}
                             aria-invalid={messagesPerField.existsError("username")}
@@ -110,13 +110,13 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                 )}
 
                 <div className="space-y-2">
-                    <Label htmlFor="password">{msg("password")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="password"
                         name="password"
                         type="password"
                         size="xl"
+                        placeholder={msgStr("password")}
                         autoComplete="new-password"
                         aria-invalid={messagesPerField.existsError("password")}
                     />
@@ -126,13 +126,13 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="password-confirm">{msg("passwordConfirm")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="password-confirm"
                         name="password-confirm"
                         type="password"
                         size="xl"
+                        placeholder={msgStr("passwordConfirm")}
                         autoComplete="new-password"
                         aria-invalid={messagesPerField.existsError("password-confirm")}
                     />

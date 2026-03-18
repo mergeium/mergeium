@@ -12,7 +12,7 @@ const inputVariants = cva(
         default:
           "border border-input bg-transparent focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:bg-input/50 dark:bg-input/30 dark:disabled:bg-input/80",
         secondary:
-          "border-0 bg-muted focus-visible:ring-3 focus-visible:ring-ring/50",
+          "border-0 bg-muted focus-visible:ring-0",
       },
       size: {
         default: "h-8 px-2.5 py-1",

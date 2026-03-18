@@ -48,7 +48,6 @@ export default function LoginOtp(props: { kcContext: Extract<KcContext, { pageId
                 )}
 
                 <div className="space-y-2">
-                    <Label htmlFor="otp">{msg("loginOtpOneTime")}</Label>
                     <Input
                         variant="secondary"
                         id="otp"
@@ -57,6 +56,7 @@ export default function LoginOtp(props: { kcContext: Extract<KcContext, { pageId
                         type="text"
                         size="xl"
                         autoFocus
+                        placeholder={msgStr("loginOtpOneTime")}
                         aria-invalid={messagesPerField.existsError("totp")}
                     />
                     {messagesPerField.existsError("totp") && (

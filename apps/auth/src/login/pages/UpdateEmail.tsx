@@ -24,13 +24,13 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
         >
             <form id="kc-update-email-form" className="space-y-4" action={url.loginAction} method="post">
                 <div className="space-y-2">
-                    <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
                     <Input
                         variant="secondary"
                         id="email"
                         name="email"
                         type="email"
                         size="xl"
+                        placeholder={msgStr("email")}
                         defaultValue={profile?.attributesByName?.email?.value ?? ""}
                         aria-invalid={messagesPerField.existsError("email")}
                     />

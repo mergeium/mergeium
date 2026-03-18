@@ -3,7 +3,6 @@ import { useScript } from "./LoginPasskeysConditionalAuthenticate.useScript";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Input } from "@mergeium/ui/components/input";
-import { Label } from "@mergeium/ui/components/label";
 import Template from "../Template";
 
 export default function LoginPasskeysConditionalAuthenticate(
@@ -113,7 +112,6 @@ export default function LoginPasskeysConditionalAuthenticate(
                             >
                                 {!usernameHidden && (
                                     <div className="space-y-2">
-                                        <Label htmlFor="username">{msg("passkey-autofill-select")}</Label>
                                         <Input
                                             variant="secondary"
                                             tabIndex={1}
@@ -125,6 +123,7 @@ export default function LoginPasskeysConditionalAuthenticate(
                                             autoComplete="username webauthn"
                                             type="text"
                                             autoFocus
+                                            placeholder={msgStr("passkey-autofill-select")}
                                         />
                                         {messagesPerField.existsError("username") && (
                                             <span id="input-error-username" className="text-sm text-destructive" aria-live="polite">

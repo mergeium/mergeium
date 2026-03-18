@@ -95,10 +95,6 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
 
                 <form action={url.loginAction} id="kc-totp-settings-form" method="post" className="mt-6 space-y-4">
                     <div className="space-y-2">
-                        <div className="flex items-center gap-1">
-                            <Label htmlFor="totp">{msg("authenticatorCode")}</Label>
-                            <span className="text-destructive">*</span>
-                        </div>
                         <Input
                             variant="secondary"
                             type="text"
@@ -106,6 +102,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                             name="totp"
                             size="xl"
                             autoComplete="off"
+                            placeholder={msgStr("authenticatorCode")}
                             aria-invalid={messagesPerField.existsError("totp")}
                         />
                         {messagesPerField.existsError("totp") && (
@@ -123,10 +120,6 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                     </div>
 
                     <div className="space-y-2">
-                        <div className="flex items-center gap-1">
-                            <Label htmlFor="userLabel">{msg("loginTotpDeviceName")}</Label>
-                            {totp.otpCredentials.length >= 1 && <span className="text-destructive">*</span>}
-                        </div>
                         <Input
                             variant="secondary"
                             type="text"
@@ -134,6 +127,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                             name="userLabel"
                             size="xl"
                             autoComplete="off"
+                            placeholder={msgStr("loginTotpDeviceName")}
                             aria-invalid={messagesPerField.existsError("userLabel")}
                         />
                         {messagesPerField.existsError("userLabel") && (
