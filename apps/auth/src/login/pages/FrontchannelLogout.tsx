@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Separator } from "@mergeium/ui/components/separator";
+import Template from "../Template";
 
-export default function FrontchannelLogout(props: PageProps<Extract<KcContext, { pageId: "frontchannel-logout.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function FrontchannelLogout(props: { kcContext: Extract<KcContext, { pageId: "frontchannel-logout.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { logout } = kcContext;
 
@@ -30,8 +30,6 @@ export default function FrontchannelLogout(props: PageProps<Extract<KcContext, {
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             documentTitle={msgStr("frontchannel-logout.title")}
             headerNode={msg("frontchannel-logout.title")}
         >

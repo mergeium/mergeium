@@ -1,10 +1,10 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
+import Template from "../Template";
 
-export default function Code(props: PageProps<Extract<KcContext, { pageId: "code.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function Code(props: { kcContext: Extract<KcContext, { pageId: "code.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { code } = kcContext;
 
@@ -14,8 +14,6 @@ export default function Code(props: PageProps<Extract<KcContext, { pageId: "code
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={code.success ? msg("codeSuccessTitle") : msg("codeErrorTitle", code.error)}
         >
             <div className="space-y-4">

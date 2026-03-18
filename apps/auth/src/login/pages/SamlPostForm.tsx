@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function SamlPostForm(props: PageProps<Extract<KcContext, { pageId: "saml-post-form.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function SamlPostForm(props: { kcContext: Extract<KcContext, { pageId: "saml-post-form.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { msgStr, msg } = i18n;
 
@@ -28,7 +28,7 @@ export default function SamlPostForm(props: PageProps<Extract<KcContext, { pageI
     }, [htmlFormElement]);
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("saml.post-form.title")}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={msg("saml.post-form.title")}>
             <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">{msg("saml.post-form.message")}</p>
                 <form name="saml-post-binding" method="post" action={samlPost.url} ref={setHtmlFormElement}>

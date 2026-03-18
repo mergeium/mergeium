@@ -1,13 +1,13 @@
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
-export default function LoginRecoveryAuthnCodeInput(props: PageProps<Extract<KcContext, { pageId: "login-recovery-authn-code-input.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginRecoveryAuthnCodeInput(props: { kcContext: Extract<KcContext, { pageId: "login-recovery-authn-code-input.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, messagesPerField, recoveryAuthnCodesInputBean } = kcContext;
 
@@ -17,8 +17,6 @@ export default function LoginRecoveryAuthnCodeInput(props: PageProps<Extract<KcC
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("auth-recovery-code-header")}
             displayMessage={!messagesPerField.existsError("recoveryCodeInput")}
         >

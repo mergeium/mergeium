@@ -1,16 +1,16 @@
 import type { JSX } from "keycloakify/tools/JSX";
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
+import Template from "../Template";
 
-export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginUpdatePassword(props: { kcContext: Extract<KcContext, { pageId: "login-update-password.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { msg, msgStr } = i18n;
 
@@ -20,8 +20,6 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayMessage={!messagesPerField.existsError("password", "password-confirm")}
             headerNode={msg("updatePasswordTitle")}
         >

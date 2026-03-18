@@ -1,11 +1,11 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function Error(props: PageProps<Extract<KcContext, { pageId: "error.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function Error(props: { kcContext: Extract<KcContext, { pageId: "error.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { message, client, skipLink } = kcContext;
 
@@ -15,8 +15,6 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayMessage={false}
             headerNode={msg("errorTitle")}
         >

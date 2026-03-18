@@ -1,10 +1,10 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function WebauthnError(props: PageProps<Extract<KcContext, { pageId: "webauthn-error.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function WebauthnError(props: { kcContext: Extract<KcContext, { pageId: "webauthn-error.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, isAppInitiatedAction } = kcContext;
 
@@ -14,8 +14,6 @@ export default function WebauthnError(props: PageProps<Extract<KcContext, { page
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayMessage
             headerNode={msg("webauthn-error-title")}
         >

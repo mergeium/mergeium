@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import { useScript } from "./WebauthnAuthenticate.useScript";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import Template from "../Template";
 
 
-export default function WebauthnAuthenticate(props: PageProps<Extract<KcContext, { pageId: "webauthn-authenticate.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function WebauthnAuthenticate(props: { kcContext: Extract<KcContext, { pageId: "webauthn-authenticate.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, realm, registrationDisabled, authenticators, shouldDisplayAuthenticators } = kcContext;
 
@@ -24,8 +24,6 @@ export default function WebauthnAuthenticate(props: PageProps<Extract<KcContext,
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayInfo={realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <div id="kc-registration">

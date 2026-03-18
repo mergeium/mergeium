@@ -1,15 +1,15 @@
 import { Fragment } from "react";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { useScript } from "./LoginPasskeysConditionalAuthenticate.useScript";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
 export default function LoginPasskeysConditionalAuthenticate(
-    props: PageProps<Extract<KcContext, { pageId: "login-passkeys-conditional-authenticate.ftl" }>, I18n>
+    props: { kcContext: Extract<KcContext, { pageId: "login-passkeys-conditional-authenticate.ftl" }>; i18n: I18n }
 ) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+    const { kcContext, i18n } = props;
 
     const { messagesPerField, login, url, usernameHidden, shouldDisplayAuthenticators, authenticators, registrationDisabled, realm } = kcContext;
 
@@ -23,8 +23,6 @@ export default function LoginPasskeysConditionalAuthenticate(
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("passkey-login-title")}
             infoNode={
                 realm.registrationAllowed &&

@@ -1,18 +1,18 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
-export default function LoginX509Info(props: PageProps<Extract<KcContext, { pageId: "login-x509-info.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginX509Info(props: { kcContext: Extract<KcContext, { pageId: "login-x509-info.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, x509 } = kcContext;
 
     const { msg, msgStr } = i18n;
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("doLogIn")}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={msg("doLogIn")}>
             <form id="kc-x509-login-info" action={url.loginAction} method="post" className="space-y-6">
                 <div className="space-y-2">
                     <Label htmlFor="certificate_subjectDN">{msg("clientCertificate")}</Label>

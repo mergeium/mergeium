@@ -1,13 +1,13 @@
 import { useScript } from "./LoginRecoveryAuthnCodeConfig.useScript";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
-export default function LoginRecoveryAuthnCodeConfig(props: PageProps<Extract<KcContext, { pageId: "login-recovery-authn-code-config.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginRecoveryAuthnCodeConfig(props: { kcContext: Extract<KcContext, { pageId: "login-recovery-authn-code-config.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { recoveryAuthnCodesConfigBean, isAppInitiatedAction } = kcContext;
 
@@ -21,8 +21,6 @@ export default function LoginRecoveryAuthnCodeConfig(props: PageProps<Extract<Kc
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("recovery-code-config-header")}
         >
             <div className="rounded-md border border-yellow-500/50 bg-yellow-50 p-4 dark:bg-yellow-950/20" aria-label="Warning alert">

@@ -1,41 +1,34 @@
-import type { JSX } from "keycloakify/tools/JSX";
-import { useState, useLayoutEffect } from "react";
-import type { LazyOrNot } from "keycloakify/tools/LazyOrNot";
+import { useLayoutEffect } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { getKcClsx } from "keycloakify/login/lib/kcClsx";
+import Template from "../Template";
+import { Input } from "@mergeium/ui/components/input";
 import { Button } from "@mergeium/ui/components/button";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
 import { Label } from "@mergeium/ui/components/label";
 
+export default function Register(props: { kcContext: Extract<KcContext, { pageId: "register.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
-type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
-    UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
-    doMakeUserConfirmPassword: boolean;
-};
-
-export default function Register(props: RegisterProps) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes, UserProfileFormFields, doMakeUserConfirmPassword } = props;
-
-    const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
-
-    const { messageHeader, url, messagesPerField, recaptchaRequired, recaptchaVisible, recaptchaSiteKey, recaptchaAction, termsAcceptanceRequired } =
-        kcContext;
+    const {
+        messageHeader,
+        url,
+        messagesPerField,
+        recaptchaRequired,
+        recaptchaVisible,
+        recaptchaSiteKey,
+        recaptchaAction,
+        termsAcceptanceRequired,
+        realm
+    } = kcContext;
 
     const { msg, msgStr, advancedMsg } = i18n;
 
-    const [isFormSubmittable, setIsFormSubmittable] = useState(false);
-    const [areTermsAccepted, setAreTermsAccepted] = useState(false);
-
     useLayoutEffect(() => {
         (window as any)["onSubmitRecaptcha"] = () => {
-            // @ts-expect-error
-            document.getElementById("kc-register-form").requestSubmit();
+            (document.getElementById("kc-register-form") as HTMLFormElement).requestSubmit();
         };
-
         return () => {
             delete (window as any)["onSubmitRecaptcha"];
         };
@@ -45,33 +38,107 @@ export default function Register(props: RegisterProps) {
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={messageHeader !== undefined ? advancedMsg(messageHeader) : msg("registerTitle")}
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields
         >
             <form id="kc-register-form" className="space-y-4" action={url.registrationAction} method="post">
-                <UserProfileFormFields
-                    kcContext={kcContext}
-                    i18n={i18n}
-                    kcClsx={kcClsx}
-                    onIsFormSubmittableValueChange={setIsFormSubmittable}
-                    doMakeUserConfirmPassword={doMakeUserConfirmPassword}
-                />
-                {termsAcceptanceRequired && (
-                    <TermsAcceptance
-                        i18n={i18n}
-                        messagesPerField={messagesPerField}
-                        areTermsAccepted={areTermsAccepted}
-                        onAreTermsAcceptedValueChange={setAreTermsAccepted}
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="firstName">{msg("firstName")} <span className="text-destructive">*</span></Label>
+                        <Input
+                            id="firstName"
+                            name="firstName"
+                            defaultValue={kcContext.profile?.attributesByName?.firstName?.value ?? ""}
+                            aria-invalid={messagesPerField.existsError("firstName")}
+                        />
+                        {messagesPerField.existsError("firstName") && (
+                            <p className="text-xs text-destructive">{messagesPerField.get("firstName")}</p>
+                        )}
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="lastName">{msg("lastName")} <span className="text-destructive">*</span></Label>
+                        <Input
+                            id="lastName"
+                            name="lastName"
+                            defaultValue={kcContext.profile?.attributesByName?.lastName?.value ?? ""}
+                            aria-invalid={messagesPerField.existsError("lastName")}
+                        />
+                        {messagesPerField.existsError("lastName") && (
+                            <p className="text-xs text-destructive">{messagesPerField.get("lastName")}</p>
+                        )}
+                    </div>
+                </div>
+
+                <div className="space-y-2">
+                    <Label htmlFor="email">{msg("email")} <span className="text-destructive">*</span></Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        defaultValue={kcContext.profile?.attributesByName?.email?.value ?? ""}
+                        aria-invalid={messagesPerField.existsError("email")}
                     />
-                )}
-                {recaptchaRequired && (recaptchaVisible || recaptchaAction === undefined) && (
-                    <div>
-                        <div className="g-recaptcha" data-size="compact" data-sitekey={recaptchaSiteKey} data-action={recaptchaAction}></div>
+                    {messagesPerField.existsError("email") && (
+                        <p className="text-xs text-destructive">{messagesPerField.get("email")}</p>
+                    )}
+                </div>
+
+                {!realm.registrationEmailAsUsername && (
+                    <div className="space-y-2">
+                        <Label htmlFor="username">{msg("username")} <span className="text-destructive">*</span></Label>
+                        <Input
+                            id="username"
+                            name="username"
+                            autoComplete="username"
+                            defaultValue={kcContext.profile?.attributesByName?.username?.value ?? ""}
+                            aria-invalid={messagesPerField.existsError("username")}
+                        />
+                        {messagesPerField.existsError("username") && (
+                            <p className="text-xs text-destructive">{messagesPerField.get("username")}</p>
+                        )}
                     </div>
                 )}
+
+                <div className="space-y-2">
+                    <Label htmlFor="password">{msg("password")} <span className="text-destructive">*</span></Label>
+                    <Input
+                        id="password"
+                        name="password"
+                        type="password"
+                        autoComplete="new-password"
+                        aria-invalid={messagesPerField.existsError("password")}
+                    />
+                    {messagesPerField.existsError("password") && (
+                        <p className="text-xs text-destructive">{messagesPerField.get("password")}</p>
+                    )}
+                </div>
+
+                <div className="space-y-2">
+                    <Label htmlFor="password-confirm">{msg("passwordConfirm")} <span className="text-destructive">*</span></Label>
+                    <Input
+                        id="password-confirm"
+                        name="password-confirm"
+                        type="password"
+                        autoComplete="new-password"
+                        aria-invalid={messagesPerField.existsError("password-confirm")}
+                    />
+                    {messagesPerField.existsError("password-confirm") && (
+                        <p className="text-xs text-destructive">{messagesPerField.get("password-confirm")}</p>
+                    )}
+                </div>
+
+                {termsAcceptanceRequired && (
+                    <TermsAcceptance i18n={i18n} messagesPerField={messagesPerField} />
+                )}
+
+                {recaptchaRequired && (recaptchaVisible || recaptchaAction === undefined) && (
+                    <div>
+                        <div className="g-recaptcha" data-size="compact" data-sitekey={recaptchaSiteKey} data-action={recaptchaAction} />
+                    </div>
+                )}
+
                 <div className="flex items-center justify-between">
                     <Button variant="link" size="sm" className="px-0" asChild>
                         <a href={url.loginUrl}>{msg("backToLogin")}</a>
@@ -88,10 +155,7 @@ export default function Register(props: RegisterProps) {
                             {msg("doRegister")}
                         </Button>
                     ) : (
-                        <Button
-                            disabled={!isFormSubmittable || (termsAcceptanceRequired && !areTermsAccepted)}
-                            type="submit"
-                        >
+                        <Button type="submit">
                             {msgStr("doRegister")}
                         </Button>
                     )}
@@ -104,11 +168,8 @@ export default function Register(props: RegisterProps) {
 function TermsAcceptance(props: {
     i18n: I18n;
     messagesPerField: Pick<KcContext["messagesPerField"], "existsError" | "get">;
-    areTermsAccepted: boolean;
-    onAreTermsAcceptedValueChange: (areTermsAccepted: boolean) => void;
 }) {
-    const { i18n, messagesPerField, areTermsAccepted, onAreTermsAcceptedValueChange } = props;
-
+    const { i18n, messagesPerField } = props;
     const { msg } = i18n;
 
     return (
@@ -122,8 +183,6 @@ function TermsAcceptance(props: {
                     <Checkbox
                         id="termsAccepted"
                         name="termsAccepted"
-                        checked={areTermsAccepted}
-                        onCheckedChange={(checked) => onAreTermsAcceptedValueChange(checked === true)}
                         aria-invalid={messagesPerField.existsError("termsAccepted")}
                     />
                     <Label htmlFor="termsAccepted" className="text-sm font-normal">
@@ -135,9 +194,7 @@ function TermsAcceptance(props: {
                         id="input-error-terms-accepted"
                         className="text-sm text-destructive"
                         aria-live="polite"
-                        dangerouslySetInnerHTML={{
-                            __html: kcSanitize(messagesPerField.get("termsAccepted"))
-                        }}
+                        dangerouslySetInnerHTML={{ __html: kcSanitize(messagesPerField.get("termsAccepted")) }}
                     />
                 )}
             </div>

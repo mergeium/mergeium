@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { useScript } from "./LoginUsername.useScript";
@@ -9,9 +8,10 @@ import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
 import { Separator } from "@mergeium/ui/components/separator";
+import Template from "../Template";
 
-export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginUsername(props: { kcContext: Extract<KcContext, { pageId: "login-username.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { social, realm, url, usernameHidden, login, registrationDisabled, messagesPerField, enableWebAuthnConditionalUI, authenticators } =
         kcContext;
@@ -32,8 +32,6 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayMessage={!messagesPerField.existsError("username")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={

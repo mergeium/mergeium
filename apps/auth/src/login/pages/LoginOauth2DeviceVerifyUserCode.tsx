@@ -1,14 +1,14 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
 export default function LoginOauth2DeviceVerifyUserCode(
-    props: PageProps<Extract<KcContext, { pageId: "login-oauth2-device-verify-user-code.ftl" }>, I18n>
+    props: { kcContext: Extract<KcContext, { pageId: "login-oauth2-device-verify-user-code.ftl" }>; i18n: I18n }
 ) {
-    const { kcContext, i18n, doUseDefaultCss, classes, Template } = props;
+    const { kcContext, i18n } = props;
     const { url } = kcContext;
 
     const { msg, msgStr } = i18n;
@@ -17,8 +17,6 @@ export default function LoginOauth2DeviceVerifyUserCode(
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("oauth2DeviceVerificationTitle")}
         >
             <form

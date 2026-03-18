@@ -1,17 +1,17 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function LoginIdpLinkConfirmOverride(props: PageProps<Extract<KcContext, { pageId: "login-idp-link-confirm-override.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginIdpLinkConfirmOverride(props: { kcContext: Extract<KcContext, { pageId: "login-idp-link-confirm-override.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, idpDisplayName } = kcContext;
 
     const { msg } = i18n;
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("confirmOverrideIdpTitle")}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={msg("confirmOverrideIdpTitle")}>
             <form id="kc-register-form" action={url.loginAction} method="post" className="space-y-4">
                 <p className="text-sm text-muted-foreground">
                     {msg("pageExpiredMsg1")}{" "}

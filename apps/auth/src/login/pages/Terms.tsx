@@ -1,10 +1,10 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function Terms(props: PageProps<Extract<KcContext, { pageId: "terms.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function Terms(props: { kcContext: Extract<KcContext, { pageId: "terms.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { msg, msgStr } = i18n;
 
@@ -14,8 +14,6 @@ export default function Terms(props: PageProps<Extract<KcContext, { pageId: "ter
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayMessage={false}
             headerNode={msg("termsTitle")}
         >

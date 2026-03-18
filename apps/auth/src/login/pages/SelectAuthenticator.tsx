@@ -1,10 +1,10 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
+import Template from "../Template";
 
-export default function SelectAuthenticator(props: PageProps<Extract<KcContext, { pageId: "select-authenticator.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function SelectAuthenticator(props: { kcContext: Extract<KcContext, { pageId: "select-authenticator.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
     const { url, auth } = kcContext;
 
     const { msg, advancedMsg } = i18n;
@@ -13,8 +13,6 @@ export default function SelectAuthenticator(props: PageProps<Extract<KcContext, 
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayInfo={false}
             headerNode={msg("loginChooseAuthenticator")}
         >

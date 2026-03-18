@@ -1,13 +1,13 @@
 import { useScript } from "./WebauthnRegister.useScript";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
-export default function WebauthnRegister(props: PageProps<Extract<KcContext, { pageId: "webauthn-register.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function WebauthnRegister(props: { kcContext: Extract<KcContext, { pageId: "webauthn-register.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, isSetRetry, isAppInitiatedAction } = kcContext;
 
@@ -25,8 +25,6 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("webauthn-registration-title")}
         >
             <form id="register" action={url.loginAction} method="post" className="space-y-4">

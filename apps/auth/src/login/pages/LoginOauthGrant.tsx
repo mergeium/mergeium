@@ -1,11 +1,11 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Separator } from "@mergeium/ui/components/separator";
+import Template from "../Template";
 
-export default function LoginOauthGrant(props: PageProps<Extract<KcContext, { pageId: "login-oauth-grant.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, classes, Template } = props;
+export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, { pageId: "login-oauth-grant.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
     const { url, oauth, client } = kcContext;
 
     const { msg, msgStr, advancedMsg, advancedMsgStr } = i18n;
@@ -14,8 +14,6 @@ export default function LoginOauthGrant(props: PageProps<Extract<KcContext, { pa
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             bodyClassName="oauth"
             headerNode={
                 <>

@@ -1,18 +1,18 @@
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Alert, AlertTitle } from "@mergeium/ui/components/alert";
+import Template from "../Template";
 
-export default function DeleteAccountConfirm(props: PageProps<Extract<KcContext, { pageId: "delete-account-confirm.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function DeleteAccountConfirm(props: { kcContext: Extract<KcContext, { pageId: "delete-account-confirm.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, triggered_from_aia } = kcContext;
 
     const { msg, msgStr } = i18n;
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("deleteAccountConfirm")}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={msg("deleteAccountConfirm")}>
             <form action={url.loginAction} method="post" className="space-y-4">
                 <Alert variant="destructive">
                     <AlertTitle>{msg("irreversibleAction")}</AlertTitle>

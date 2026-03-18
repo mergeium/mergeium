@@ -6,7 +6,6 @@ import type { JSX } from "keycloakify/tools/JSX";
 import { useState } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { useIsPasswordRevealed } from "keycloakify/tools/useIsPasswordRevealed";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { useScript } from "./LoginPassword.useScript";
@@ -14,9 +13,10 @@ import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Separator } from "@mergeium/ui/components/separator";
+import Template from "../Template";
 
-export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginPassword(props: { kcContext: Extract<KcContext, { pageId: "login-password.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { realm, url, messagesPerField, enableWebAuthnConditionalUI, authenticators } = kcContext;
 
@@ -36,8 +36,6 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             headerNode={msg("doLogIn")}
             displayMessage={!messagesPerField.existsError("password")}
         >

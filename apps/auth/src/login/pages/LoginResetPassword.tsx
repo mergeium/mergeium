@@ -1,13 +1,13 @@
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
+import Template from "../Template";
 
-export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function LoginResetPassword(props: { kcContext: Extract<KcContext, { pageId: "login-reset-password.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, realm, auth, messagesPerField } = kcContext;
 
@@ -17,8 +17,6 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            doUseDefaultCss={doUseDefaultCss}
-            classes={classes}
             displayInfo
             displayMessage={!messagesPerField.existsError("username")}
             infoNode={realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}

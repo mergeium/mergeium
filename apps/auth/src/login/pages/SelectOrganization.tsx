@@ -1,12 +1,12 @@
 import { MouseEvent, useRef, useState } from "react";
-import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
 import { cn } from "@mergeium/ui/lib/utils";
+import Template from "../Template";
 
-export default function SelectOrganization(props: PageProps<Extract<KcContext, { pageId: "select-organization.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+export default function SelectOrganization(props: { kcContext: Extract<KcContext, { pageId: "select-organization.ftl" }>; i18n: I18n }) {
+    const { kcContext, i18n } = props;
 
     const { url, user } = kcContext;
 
@@ -38,7 +38,7 @@ export default function SelectOrganization(props: PageProps<Extract<KcContext, {
     const shouldDisplayGrid = organizations.length > 3;
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={null}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={null}>
             <form ref={formRef} action={url.loginAction} method="post">
                 <div id="kc-user-organizations" className="space-y-4">
                     <h2 className="text-lg font-semibold">{msg("organization.select")}</h2>
