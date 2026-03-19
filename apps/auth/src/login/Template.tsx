@@ -5,6 +5,7 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import { Alert, AlertDescription } from "@mergeium/ui/components/alert";
 import { Button } from "@mergeium/ui/components/button";
+import { WarningCircleIcon, CheckCircleIcon, InfoIcon, WarningIcon } from "@phosphor-icons/react";
 
 type TemplateProps = {
     kcContext: KcContext;
@@ -54,8 +55,8 @@ export default function Template(props: TemplateProps) {
     }
 
     return (
-        <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8 relative">
-            <header className="absolute top-0 left-0 right-0 flex items-center justify-center py-16">
+        <div className="min-h-screen bg-background flex flex-col items-center px-4 py-8">
+            <header className="flex items-center justify-center h-20 shrink-0">
                 <h1
                     className="text-2xl"
                     style={{ fontFamily: "'Climate Crisis', system-ui" }}
@@ -63,14 +64,14 @@ export default function Template(props: TemplateProps) {
                     mergeium
                 </h1>
             </header>
-            <div className="w-full max-w-85 space-y-5">
+            <div className="flex-1 flex flex-col justify-center w-full max-w-85 space-y-5">
                 {headerNode && (
                     <div className="space-y-1">
                         {(() => {
                             if (auth !== undefined && auth.showUsername && !auth.showResetCredentials) {
                                 return (
                                     <div className="flex items-center gap-2">
-                                        <h2 className="text-xl font-semibold tracking-tight">{auth.attemptedUsername}</h2>
+                                        <h2 className="text-lg font-semibold tracking-tight">{auth.attemptedUsername}</h2>
                                         <Button variant="link" size="xs" asChild>
                                             <a href={url.loginRestartFlowUrl} aria-label={msgStr("restartLoginTooltip")}>
                                                 {msg("restartLoginTooltip")}
@@ -79,13 +80,17 @@ export default function Template(props: TemplateProps) {
                                     </div>
                                 );
                             }
-                            return <h2 className="text-xl font-semibold tracking-tight">{headerNode}</h2>;
+                            return <h2 className="text-lg font-semibold tracking-tight">{headerNode}</h2>;
                         })()}
                     </div>
                 )}
 
                 {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
                     <Alert variant={message.type === "error" ? "destructive" : "default"}>
+                        {message.type === "error" && <WarningCircleIcon className="size-4" />}
+                        {message.type === "warning" && <WarningIcon className="size-4" />}
+                        {message.type === "success" && <CheckCircleIcon className="size-4" />}
+                        {message.type === "info" && <InfoIcon className="size-4" />}
                         <AlertDescription>
                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
                         </AlertDescription>

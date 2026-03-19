@@ -5,7 +5,7 @@ import { EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
 import { cn } from "@mergeium/ui/lib/utils";
 
 const inputVariants = cva(
-  "w-full min-w-0 rounded-lg text-base transition-colors outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+  "w-full min-w-0 rounded-lg text-base transition-colors outline-none placeholder:text-muted-foreground/60 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
   {
     variants: {
       variant: {
@@ -60,9 +60,9 @@ function Input({
           aria-label={showPassword ? "Hide password" : "Show password"}
         >
           {showPassword ? (
-            <EyeSlashIcon className="size-4" />
+            <EyeSlashIcon className="size-5" />
           ) : (
-            <EyeIcon className="size-4" />
+            <EyeIcon className="size-5" />
           )}
         </button>
       </div>

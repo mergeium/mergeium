@@ -200,6 +200,13 @@ export const WithSocialProviders: Story = {
                             providerId: "openshift",
                             displayName: "OpenShift",
                             iconClasses: "fa fa-cloud"
+                        },
+                        {
+                            loginUrl: "apple",
+                            alias: "apple",
+                            providerId: "apple",
+                            displayName: "Apple",
+                            iconClasses: "fa fa-apple"
                         }
                     ]
                 }

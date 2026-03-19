@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
@@ -7,6 +7,7 @@ import { Input } from "@mergeium/ui/components/input";
 import { Button } from "@mergeium/ui/components/button";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
 import { Label } from "@mergeium/ui/components/label";
+import { SpinnerIcon } from "@phosphor-icons/react";
 
 export default function Register(props: { kcContext: Extract<KcContext, { pageId: "register.ftl" }>; i18n: I18n }) {
     const { kcContext, i18n } = props;
@@ -24,6 +25,7 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
     } = kcContext;
 
     const { msg, msgStr, advancedMsg } = i18n;
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useLayoutEffect(() => {
         (window as any)["onSubmitRecaptcha"] = () => {
@@ -42,7 +44,7 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
             displayMessage={messagesPerField.exists("global")}
             displayRequiredFields
         >
-            <form id="kc-register-form" className="space-y-3" action={url.registrationAction} method="post">
+            <form id="kc-register-form" className="space-y-3" action={url.registrationAction} method="post" onSubmit={() => { setIsSubmitting(true); return true; }}>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <Input
@@ -163,8 +165,8 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                         {msg("doRegister")}
                     </Button>
                 ) : (
-                    <Button type="submit" size="xl" className="w-full">
-                        {msgStr("doRegister")}
+                    <Button type="submit" size="xl" className="w-full" disabled={isSubmitting}>
+                        {isSubmitting ? <SpinnerIcon className="size-5 animate-spin" /> : msgStr("doRegister")}
                     </Button>
                 )}
                 <p className="text-center text-sm text-muted-foreground">

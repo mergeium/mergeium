@@ -11,7 +11,9 @@ import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
+import { SpinnerIcon } from "@phosphor-icons/react";
 import Template from "../Template";
+import { ProviderIcon } from "../components/provider-icons";
 
 export default function Login(props: {
   kcContext: Extract<KcContext, { pageId: "login.ftl" }>;
@@ -74,7 +76,7 @@ export default function Login(props: {
                 <h2 className="text-center text-sm text-muted-foreground">
                   {msg("identity-provider-login-label")}
                 </h2>
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-2">
                   {social.providers.map((...[p]) => (
                     <Button
                       key={p.alias}
@@ -83,10 +85,8 @@ export default function Login(props: {
                       className="w-full"
                       asChild
                     >
-                      <a id={`social-${p.alias}`} href={p.loginUrl}>
-                        {p.iconClasses && (
-                          <i className={p.iconClasses} aria-hidden="true" />
-                        )}
+                      <a id={`social-${p.alias}`} href={p.loginUrl} className="relative flex items-center justify-center w-full">
+                        <ProviderIcon providerId={p.providerId} alias={p.alias} className="size-5 absolute left-4" />
                         <span
                           dangerouslySetInnerHTML={{
                             __html: kcSanitize(p.displayName),
@@ -257,7 +257,7 @@ export default function Login(props: {
                   size="xl"
                   className="w-full"
                 >
-                  {msgStr("doLogIn")}
+                  {isLoginButtonDisabled ? <SpinnerIcon className="size-5 animate-spin" /> : msgStr("doLogIn")}
                 </Button>
               </div>
             </form>

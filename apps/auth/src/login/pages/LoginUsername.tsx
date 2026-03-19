@@ -7,7 +7,9 @@ import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
 import { Label } from "@mergeium/ui/components/label";
 import { Checkbox } from "@mergeium/ui/components/checkbox";
+import { SpinnerIcon } from "@phosphor-icons/react";
 import Template from "../Template";
+import { ProviderIcon } from "../components/provider-icons";
 
 export default function LoginUsername(props: { kcContext: Extract<KcContext, { pageId: "login-username.ftl" }>; i18n: I18n }) {
     const { kcContext, i18n } = props;
@@ -49,11 +51,11 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
                         <div id="kc-social-providers" className="space-y-3 mt-4">
                             <h2 className="text-center text-sm text-muted-foreground">{msg("identity-provider-login-label")}</h2>
-                            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                            <div className="grid grid-cols-1 gap-2">
                                 {social.providers.map((...[p]) => (
                                     <Button key={p.alias} variant="secondary" size="xl" className="w-full" asChild>
-                                        <a id={`social-${p.alias}`} href={p.loginUrl}>
-                                            {p.iconClasses && <i className={p.iconClasses} aria-hidden="true" />}
+                                        <a id={`social-${p.alias}`} href={p.loginUrl} className="relative flex items-center justify-center w-full">
+                                            <ProviderIcon providerId={p.providerId} alias={p.alias} className="size-5 absolute left-4" />
                                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(p.displayName) }} />
                                         </a>
                                     </Button>
@@ -130,7 +132,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                     size="xl"
                                     className="w-full"
                                 >
-                                    {msgStr("doLogIn")}
+                                    {isLoginButtonDisabled ? <SpinnerIcon className="size-5 animate-spin" /> : msgStr("doLogIn")}
                                 </Button>
                             </div>
                         </form>

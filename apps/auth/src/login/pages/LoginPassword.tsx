@@ -9,7 +9,7 @@ import type { I18n } from "../i18n";
 import { useScript } from "./LoginPassword.useScript";
 import { Button } from "@mergeium/ui/components/button";
 import { Input } from "@mergeium/ui/components/input";
-
+import { SpinnerIcon } from "@phosphor-icons/react";
 import Template from "../Template";
 
 export default function LoginPassword(props: { kcContext: Extract<KcContext, { pageId: "login-password.ftl" }>; i18n: I18n }) {
@@ -91,7 +91,7 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                                 size="xl"
                                 className="w-full"
                             >
-                                {msgStr("doLogIn")}
+                                {isLoginButtonDisabled ? <SpinnerIcon className="size-5 animate-spin" /> : msgStr("doLogIn")}
                             </Button>
                         </div>
                     </form>
