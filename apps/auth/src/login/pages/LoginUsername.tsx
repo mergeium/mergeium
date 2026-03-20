@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { useScript } from "./LoginUsername.useScript";
@@ -49,18 +48,18 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
             socialProvidersNode={
                 <>
                     {realm.password && social?.providers !== undefined && social.providers.length !== 0 && (
-                        <div id="kc-social-providers" className="space-y-3 mt-4">
-                            <h2 className="text-center text-sm text-muted-foreground">{msg("identity-provider-login-label")}</h2>
+                        <div id="kc-social-providers" className="space-y-3">
                             <div className="grid grid-cols-1 gap-2">
                                 {social.providers.map((...[p]) => (
                                     <Button key={p.alias} variant="secondary" size="xl" className="w-full" asChild>
                                         <a id={`social-${p.alias}`} href={p.loginUrl} className="relative flex items-center justify-center w-full">
                                             <ProviderIcon providerId={p.providerId} alias={p.alias} className="size-5 absolute left-4" />
-                                            <span dangerouslySetInnerHTML={{ __html: kcSanitize(p.displayName) }} />
+                                            <span>{`Sign in with ${p.displayName}`}</span>
                                         </a>
                                     </Button>
                                 ))}
                             </div>
+                            <div className="border-b border-border" />
                         </div>
                     )}
                 </>

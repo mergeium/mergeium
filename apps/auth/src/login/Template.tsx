@@ -97,6 +97,8 @@ export default function Template(props: TemplateProps) {
                     </Alert>
                 )}
 
+                {socialProvidersNode}
+
                 {children}
 
                 {auth !== undefined && auth.showTryAnotherWayLink && (
@@ -114,8 +116,6 @@ export default function Template(props: TemplateProps) {
                         </Button>
                     </form>
                 )}
-
-                {socialProvidersNode}
 
                 {displayInfo && infoNode && (
                     <div className="text-center text-xs text-muted-foreground">{infoNode}</div>

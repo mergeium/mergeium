@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
-export function GoogleIcon(props: IconProps) {
+function GoogleIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
@@ -13,7 +13,7 @@ export function GoogleIcon(props: IconProps) {
     );
 }
 
-export function GitHubIcon(props: IconProps) {
+function GitHubIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
             <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -21,7 +21,7 @@ export function GitHubIcon(props: IconProps) {
     );
 }
 
-export function FacebookIcon(props: IconProps) {
+function FacebookIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2" />
@@ -29,7 +29,7 @@ export function FacebookIcon(props: IconProps) {
     );
 }
 
-export function AppleIcon(props: IconProps) {
+function AppleIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
             <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
@@ -37,7 +37,7 @@ export function AppleIcon(props: IconProps) {
     );
 }
 
-export function MicrosoftIcon(props: IconProps) {
+function MicrosoftIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M0 0h11.377v11.377H0z" fill="#F25022" />
@@ -48,7 +48,7 @@ export function MicrosoftIcon(props: IconProps) {
     );
 }
 
-export function GitLabIcon(props: IconProps) {
+function GitLabIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="m23.6 9.593-.033-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1.002.07.875.875 0 0 0-.29.44l-2.208 6.763H7.538L5.33 1.085a.857.857 0 0 0-.29-.44.875.875 0 0 0-1.002-.07.856.856 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.01.008.028.02 4.97 3.722 2.458 1.86 1.496 1.131a1.01 1.01 0 0 0 1.22 0l1.497-1.131 2.458-1.86 5-3.743.012-.01a6.068 6.068 0 0 0 2.008-7.002z" fill="#E24329" />
@@ -59,7 +59,7 @@ export function GitLabIcon(props: IconProps) {
     );
 }
 
-export function LinkedInIcon(props: IconProps) {
+function LinkedInIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#0A66C2" />
@@ -67,7 +67,7 @@ export function LinkedInIcon(props: IconProps) {
     );
 }
 
-export function TwitterIcon(props: IconProps) {
+function TwitterIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -75,7 +75,7 @@ export function TwitterIcon(props: IconProps) {
     );
 }
 
-export function InstagramIcon(props: IconProps) {
+function InstagramIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <defs>
@@ -92,7 +92,7 @@ export function InstagramIcon(props: IconProps) {
     );
 }
 
-export function StackOverflowIcon(props: IconProps) {
+function StackOverflowIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154z" fill="#F58025" />
@@ -100,7 +100,7 @@ export function StackOverflowIcon(props: IconProps) {
     );
 }
 
-export function BitbucketIcon(props: IconProps) {
+function BitbucketIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" {...props}>
             <path d="M.778 1.213a.768.768 0 0 0-.768.892l3.263 19.81c.084.5.515.868 1.022.873H19.95a.772.772 0 0 0 .77-.646l3.27-20.03a.768.768 0 0 0-.768-.891zM14.52 15.53H9.522L8.17 8.466h7.561z" fill="#2684FF" />
@@ -115,7 +115,7 @@ export function BitbucketIcon(props: IconProps) {
     );
 }
 
-export function PayPalIcon(props: IconProps) {
+function PayPalIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" fill="#003087" {...props}>
             <path d="M15.607 4.653H8.941L6.645 19.251H1.82L4.862 0h7.995c3.754 0 6.375 2.294 6.473 5.513-.648-.478-2.105-.86-3.722-.86m6.57 5.546c0 3.41-3.01 6.853-6.958 6.853h-2.493L11.595 24H6.74l1.845-11.538h3.592c4.208 0 7.346-3.634 7.153-6.949a5.24 5.24 0 0 1 2.848 4.686M9.653 5.546h6.408c.907 0 1.942.222 2.363.541-.195 2.741-2.655 5.483-6.441 5.483H8.714Z" />
@@ -123,7 +123,7 @@ export function PayPalIcon(props: IconProps) {
     );
 }
 
-export function OpenShiftIcon(props: IconProps) {
+function OpenShiftIcon(props: IconProps) {
     return (
         <svg viewBox="0 0 24 24" fill="#EE0000" {...props}>
             <path d="M21.665,11.812c-0.11-1.377-0.476-2.724-1.08-3.966L24,6.599c-0.268-0.556-0.585-1.092-0.943-1.595 l-1.601,0.583c-3.534-4.95-10.412-6.098-15.363-2.565c-3.144,2.244-4.883,5.972-4.582,9.823l1.604-0.584 c0.051,0.615,0.153,1.224,0.305,1.822L0,15.335c0.338,1.339,0.922,2.604,1.721,3.731l1.812-0.659 c3.526,4.95,10.398,6.106,15.349,2.58c1.555-1.107,2.796-2.6,3.599-4.332c0.802-1.715,1.144-3.61,0.991-5.497L21.665,11.812z M16.925,9.177c0.687,1.227,0.998,2.629,0.895,4.032l1.809-0.657c-0.063,0.856-0.282,1.694-0.646,2.471 c-1.67,3.584-5.928,5.138-9.514,3.472c-0.782-0.365-1.491-0.87-2.092-1.49l-1.813,0.66c-0.979-1.01-1.64-2.285-1.903-3.667 l3.426-1.242c-0.121-0.624-0.159-1.262-0.111-1.896H6.97l-1.604,0.583c0.294-3.932,3.72-6.881,7.652-6.587 c0.868,0.065,1.716,0.288,2.504,0.658V5.508c0.778,0.364,1.483,0.867,2.082,1.483l1.599-0.582c0.002,0.002,0.004,0.003,0.006,0.005 c0.441,0.454,0.82,0.965,1.128,1.518L16.925,9.177z" />
