@@ -10,7 +10,8 @@ export default defineConfig({
         react(),
         keycloakify({
             accountThemeImplementation: "none",
-            themeName: "auth"
+            themeName: "auth",
+            keycloakifyBuildDirPath: "../../infrastructure/keycloak/providers"
         })
     ]
 });
