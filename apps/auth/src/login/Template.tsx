@@ -5,7 +5,6 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import { Alert, AlertDescription } from "@mergeium/ui/components/alert";
 import { Button } from "@mergeium/ui/components/button";
-import { WarningCircleIcon, CheckCircleIcon, InfoIcon, WarningIcon } from "@phosphor-icons/react";
 
 type TemplateProps = {
     kcContext: KcContext;
@@ -87,10 +86,6 @@ export default function Template(props: TemplateProps) {
 
                 {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
                     <Alert variant={message.type === "error" ? "destructive" : "default"}>
-                        {message.type === "error" && <WarningCircleIcon className="size-4" />}
-                        {message.type === "warning" && <WarningIcon className="size-4" />}
-                        {message.type === "success" && <CheckCircleIcon className="size-4" />}
-                        {message.type === "info" && <InfoIcon className="size-4" />}
                         <AlertDescription>
                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
                         </AlertDescription>

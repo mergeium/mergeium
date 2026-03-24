@@ -2,6 +2,8 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import Template from "../Template";
+import { Input } from "@mergeium/ui/components/input";
+import { Alert, AlertDescription } from "@mergeium/ui/components/alert";
 
 export default function Code(props: { kcContext: Extract<KcContext, { pageId: "code.ftl" }>; i18n: I18n }) {
     const { kcContext, i18n } = props;
@@ -14,28 +16,27 @@ export default function Code(props: { kcContext: Extract<KcContext, { pageId: "c
         <Template
             kcContext={kcContext}
             i18n={i18n}
-            headerNode={code.success ? msg("codeSuccessTitle") : msg("codeErrorTitle", code.error)}
+            displayMessage={false}
+            headerNode={msg(code.success ? "codeSuccessTitle" : "errorTitle")}
         >
             <div className="space-y-3">
                 {code.success ? (
-                    <>
-                        <p className="text-sm text-muted-foreground">{msg("copyCodeInstruction")}</p>
-                        <input
-                            id="code"
-                            className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                            defaultValue={code.code}
-                            readOnly
-                        />
-                    </>
+                    <Input
+                        id="code"
+                        variant="secondary"
+                        size="xl"
+                        className="text-center font-mono text-lg tracking-widest"
+                        defaultValue={code.code}
+                        readOnly
+                        copyable
+                    />
                 ) : (
                     code.error && (
-                        <p
-                            id="error"
-                            className="text-xs text-destructive"
-                            dangerouslySetInnerHTML={{
-                                __html: kcSanitize(code.error)
-                            }}
-                        />
+                        <Alert variant="destructive">
+                            <AlertDescription>
+                                <span dangerouslySetInnerHTML={{ __html: kcSanitize(code.error) }} />
+                            </AlertDescription>
+                        </Alert>
                     )
                 )}
             </div>

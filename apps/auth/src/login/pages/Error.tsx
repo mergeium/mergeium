@@ -2,6 +2,8 @@ import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import Template from "../Template";
+import { Alert, AlertDescription } from "@mergeium/ui/components/alert";
+import { Button } from "@mergeium/ui/components/button";
 
 export default function Error(props: { kcContext: Extract<KcContext, { pageId: "error.ftl" }>; i18n: I18n }) {
     const { kcContext, i18n } = props;
@@ -18,11 +20,15 @@ export default function Error(props: { kcContext: Extract<KcContext, { pageId: "
             headerNode={msg("errorTitle")}
         >
             <div className="space-y-3">
-                <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
+                <Alert variant="destructive">
+                    <AlertDescription>
+                        <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
+                    </AlertDescription>
+                </Alert>
                 {!skipLink && client !== undefined && client.baseUrl !== undefined && (
-                    <p className="text-center text-sm text-muted-foreground">
-                        <a href={client.baseUrl} className="underline hover:text-foreground">{msg("backToApplication")}</a>
-                    </p>
+                    <Button variant="outline" size="xl" className="w-full" asChild>
+                        <a href={client.baseUrl}>{msg("backToApplication")}</a>
+                    </Button>
                 )}
             </div>
         </Template>

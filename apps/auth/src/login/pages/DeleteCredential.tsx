@@ -20,11 +20,11 @@ export default function DeleteCredential(props: { kcContext: Extract<KcContext, 
             <div className="space-y-3">
                 <p className="text-sm text-muted-foreground">{msg("deleteCredentialMessage", credentialLabel)}</p>
                 <form className="flex gap-2" action={url.loginAction} method="POST">
-                    <Button type="submit" size="xl" className="flex-1 w-full" name="accept" id="kc-accept" variant="destructive">
-                        {msgStr("doConfirmDelete")}
-                    </Button>
-                    <Button type="submit" size="xl" className="flex-1 w-full" name="cancel-aia" id="kc-decline" variant="outline">
+                    <Button type="submit" size="xl" className="flex-1" name="cancel-aia" id="kc-decline" variant="outline">
                         {msgStr("doCancel")}
+                    </Button>
+                    <Button type="submit" size="xl" className="flex-1" name="accept" id="kc-accept" variant="destructive">
+                        {msgStr("doConfirmDelete")}
                     </Button>
                 </form>
             </div>

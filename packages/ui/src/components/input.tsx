@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
+import { EyeIcon, EyeSlashIcon, CopyIcon, CheckIcon } from "@phosphor-icons/react";
 
 import { cn } from "@mergeium/ui/lib/utils";
 
@@ -30,56 +30,70 @@ const inputVariants = cva(
 );
 
 type InputProps = Omit<React.ComponentProps<"input">, "size"> &
-  VariantProps<typeof inputVariants>;
+  VariantProps<typeof inputVariants> & {
+    copyable?: boolean;
+  };
 
 function Input({
   className,
   type,
   variant = "default",
   size = "default",
+  copyable = false,
   ...props
 }: InputProps) {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
   const isPassword = type === "password";
-  const inputType = isPassword && showPassword ? "text" : type;
+  const hasSuffix = isPassword || copyable;
 
-  if (isPassword) {
-    return (
-      <div className="relative w-full">
-        <input
-          type={inputType}
-          data-slot="input"
-          className={cn(inputVariants({ variant, size }), "pr-10", className)}
-          {...props}
-        />
-        <button
-          type="button"
-          tabIndex={-1}
-          className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 text-muted-foreground hover:text-foreground"
-          onClick={() => setShowPassword((v) => !v)}
-          aria-label={showPassword ? "Hide password" : "Show password"}
-        >
-          {showPassword ? (
-            <EyeSlashIcon className="size-5" />
-          ) : (
-            <EyeIcon className="size-5" />
-          )}
-        </button>
-      </div>
-    );
-  }
+  const suffixAction = isPassword
+    ? { onClick: () => setShowPassword((v) => !v), label: showPassword ? "Hide password" : "Show password" }
+    : copyable
+      ? {
+          onClick: () => {
+            navigator.clipboard.writeText(String(props.value ?? props.defaultValue ?? "")).then(() => {
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2000);
+            });
+          },
+          label: "Copy",
+        }
+      : null;
 
-  return (
+  const suffixIcon = isPassword
+    ? showPassword ? <EyeSlashIcon className="size-5" /> : <EyeIcon className="size-5" />
+    : copied ? <CheckIcon className="size-5" /> : <CopyIcon className="size-5" />;
+
+  const inputEl = (
     <input
-      type={type}
+      type={isPassword && showPassword ? "text" : type}
       data-slot="input"
       className={cn(
         inputVariants({ variant, size }),
-        "file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
+        hasSuffix && "pr-10",
+        !hasSuffix && "file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
         className
       )}
       {...props}
     />
+  );
+
+  if (!suffixAction) return inputEl;
+
+  return (
+    <div className="relative w-full">
+      {inputEl}
+      <button
+        type="button"
+        tabIndex={-1}
+        className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 text-muted-foreground hover:text-foreground"
+        onClick={suffixAction.onClick}
+        aria-label={suffixAction.label}
+      >
+        {suffixIcon}
+      </button>
+    </div>
   );
 }
 
