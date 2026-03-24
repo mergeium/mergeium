@@ -51,7 +51,7 @@ export default function Login(props: {
       kcContext={kcContext}
       i18n={i18n}
       displayMessage={!messagesPerField.existsError("username", "password")}
-      headerNode={msg("loginAccountTitle")}
+      headerNode={<span className="text-2xl font-bold tracking-tight">{msg("loginAccountTitle")}</span>}
       displayInfo={
         realm.password && realm.registrationAllowed && !registrationDisabled
       }
@@ -60,7 +60,7 @@ export default function Login(props: {
           <div id="kc-registration">
             <span>
               {msg("noAccount")}{" "}
-              <a tabIndex={8} href={url.registrationUrl}>
+              <a tabIndex={8} href={url.registrationUrl} className="hover:underline hover:text-foreground">
                 {msg("doRegister")}
               </a>
             </span>
@@ -187,52 +187,32 @@ export default function Login(props: {
                   )}
               </div>
 
-              {realm.rememberMe && !usernameHidden && realm.resetPasswordAllowed ? (
+              {(realm.rememberMe || realm.resetPasswordAllowed) && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Checkbox
-                      tabIndex={5}
-                      id="rememberMe"
-                      name="rememberMe"
-                      defaultChecked={!!login.rememberMe}
-                    />
-                    <Label
-                      htmlFor="rememberMe"
-                      className="text-sm font-normal text-muted-foreground"
-                    >
-                      {msg("rememberMe")}
-                    </Label>
+                    {realm.rememberMe && !usernameHidden && (
+                      <>
+                        <Checkbox
+                          tabIndex={5}
+                          id="rememberMe"
+                          name="rememberMe"
+                          defaultChecked={!!login.rememberMe}
+                        />
+                        <Label
+                          htmlFor="rememberMe"
+                          className="text-xs font-normal text-muted-foreground"
+                        >
+                          {msg("rememberMe")}
+                        </Label>
+                      </>
+                    )}
                   </div>
-                  <a tabIndex={6} href={url.loginResetCredentialsUrl} className="text-sm text-muted-foreground underline hover:text-foreground">
-                    {msg("doForgotPassword")}
-                  </a>
-                </div>
-              ) : (
-                <>
-                  {realm.rememberMe && !usernameHidden && (
-                    <div className="flex items-center gap-2">
-                      <Checkbox
-                        tabIndex={5}
-                        id="rememberMe"
-                        name="rememberMe"
-                        defaultChecked={!!login.rememberMe}
-                      />
-                      <Label
-                        htmlFor="rememberMe"
-                        className="text-sm font-normal text-muted-foreground"
-                      >
-                        {msg("rememberMe")}
-                      </Label>
-                    </div>
-                  )}
                   {realm.resetPasswordAllowed && (
-                    <p className="text-center text-sm text-muted-foreground">
-                      <a tabIndex={6} href={url.loginResetCredentialsUrl} className="underline hover:text-foreground">
-                        {msg("doForgotPassword")}
-                      </a>
-                    </p>
+                    <a tabIndex={6} href={url.loginResetCredentialsUrl} className="text-xs text-muted-foreground hover:underline hover:text-foreground">
+                      {msg("doForgotPassword")}
+                    </a>
                   )}
-                </>
+                </div>
               )}
 
               <div id="kc-form-buttons">

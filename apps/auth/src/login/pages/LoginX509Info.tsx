@@ -15,27 +15,27 @@ export default function LoginX509Info(props: { kcContext: Extract<KcContext, { p
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("doLogIn")}>
             <form id="kc-x509-login-info" action={url.loginAction} method="post" className="space-y-6">
                 <div className="space-y-2">
-                    <Label htmlFor="certificate_subjectDN">{msg("clientCertificate")}</Label>
-                    <p id="certificate_subjectDN" className="text-sm text-muted-foreground">
+                    <Label htmlFor="certificate_subjectDN" className="block text-center">{msg("clientCertificate")}</Label>
+                    <p id="certificate_subjectDN" className="text-center text-sm text-muted-foreground">
                         {x509.formData.subjectDN ? x509.formData.subjectDN : msg("noCertificate")}
                     </p>
                 </div>
 
                 {x509.formData.isUserEnabled && (
                     <div className="space-y-2">
-                        <Label htmlFor="username">{msg("doX509Login")}</Label>
-                        <p id="username" className="text-sm text-muted-foreground">
+                        <Label htmlFor="username" className="block text-center">{msg("doX509Login")}</Label>
+                        <p id="username" className="text-center text-sm text-muted-foreground">
                             {x509.formData.username}
                         </p>
                     </div>
                 )}
 
                 <div className="flex gap-2">
-                    <Button type="submit" size="xl" className="flex-1 w-full" name="login" id="kc-login">
+                    <Button type="submit" size="xl" className="flex-1" name="login" id="kc-login">
                         {msgStr("doContinue")}
                     </Button>
                     {x509.formData.isUserEnabled && (
-                        <Button type="submit" size="xl" className="flex-1 w-full" variant="outline" name="cancel" id="kc-cancel">
+                        <Button type="submit" size="xl" className="flex-1" variant="outline" name="cancel" id="kc-cancel">
                             {msgStr("doIgnore")}
                         </Button>
                     )}

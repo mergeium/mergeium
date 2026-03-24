@@ -79,13 +79,13 @@ export default function Template(props: TemplateProps) {
                                     </div>
                                 );
                             }
-                            return <h2 className="text-lg font-semibold tracking-tight">{headerNode}</h2>;
+                            return <h2 className="text-lg font-semibold tracking-tight text-center">{headerNode}</h2>;
                         })()}
                     </div>
                 )}
 
                 {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-                    <Alert variant={message.type === "error" ? "destructive" : "default"}>
+                    <Alert variant={message.type === "error" ? "destructive" : "default"} className="text-center">
                         <AlertDescription>
                             <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
                         </AlertDescription>

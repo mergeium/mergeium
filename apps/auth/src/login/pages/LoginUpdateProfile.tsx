@@ -71,7 +71,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                     <Button
                         type="submit"
                         size="xl"
-                        className="flex-1 w-full"
+                        className="flex-1"
                     >
                         {msgStr("doSubmit")}
                     </Button>
@@ -79,7 +79,7 @@ export default function LoginUpdateProfile(props: { kcContext: Extract<KcContext
                         <Button
                             variant="outline"
                             size="xl"
-                            className="flex-1 w-full"
+                            className="flex-1"
                             type="submit"
                             name="cancel-aia"
                             value="true"

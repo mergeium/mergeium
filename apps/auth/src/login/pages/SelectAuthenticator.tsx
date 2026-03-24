@@ -22,7 +22,7 @@ export default function SelectAuthenticator(props: { kcContext: Extract<KcContex
                         key={i}
                         variant="outline"
                         size="xl"
-                        className="flex h-auto w-full items-center justify-start gap-4 p-4 text-left"
+                        className="flex h-auto w-full items-center justify-start gap-4 p-4 text-left whitespace-normal"
                         type="submit"
                         name="authenticationExecution"
                         value={authenticationSelection.authExecId}

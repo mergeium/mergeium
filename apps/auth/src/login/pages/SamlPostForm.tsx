@@ -30,13 +30,13 @@ export default function SamlPostForm(props: { kcContext: Extract<KcContext, { pa
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("saml.post-form.title")}>
             <div className="space-y-3">
-                <p className="text-sm text-muted-foreground">{msg("saml.post-form.message")}</p>
+                <p className="text-center text-sm text-muted-foreground">{msg("saml.post-form.message")}</p>
                 <form name="saml-post-binding" method="post" action={samlPost.url} ref={setHtmlFormElement}>
                     {samlPost.SAMLRequest && <input type="hidden" name="SAMLRequest" value={samlPost.SAMLRequest} />}
                     {samlPost.SAMLResponse && <input type="hidden" name="SAMLResponse" value={samlPost.SAMLResponse} />}
                     {samlPost.relayState && <input type="hidden" name="RelayState" value={samlPost.relayState} />}
                     <noscript>
-                        <p className="text-sm text-muted-foreground">{msg("saml.post-form.js-disabled")}</p>
+                        <p className="text-center text-sm text-muted-foreground">{msg("saml.post-form.js-disabled")}</p>
                         <Button type="submit" size="xl" className="w-full">{msgStr("doContinue")}</Button>
                     </noscript>
                 </form>

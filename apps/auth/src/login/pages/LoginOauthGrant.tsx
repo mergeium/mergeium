@@ -46,7 +46,7 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
                             {client.attributes.tosUri && (
                                 <>
                                     {msg("oauthGrantReview")}
-                                    <a href={client.attributes.tosUri} target="_blank" className="underline">
+                                    <a href={client.attributes.tosUri} target="_blank" className="hover:underline">
                                         {msg("oauthGrantTos")}
                                     </a>
                                 </>
@@ -54,7 +54,7 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
                             {client.attributes.policyUri && (
                                 <>
                                     {msg("oauthGrantReview")}
-                                    <a href={client.attributes.policyUri} target="_blank" className="underline">
+                                    <a href={client.attributes.policyUri} target="_blank" className="hover:underline">
                                         {msg("oauthGrantPolicy")}
                                     </a>
                                 </>
@@ -67,10 +67,10 @@ export default function LoginOauthGrant(props: { kcContext: Extract<KcContext, {
                 <form action={url.oauthAction} method="POST">
                     <input type="hidden" name="code" value={oauth.code} />
                     <div className="flex gap-2">
-                        <Button name="accept" id="kc-login" type="submit" size="xl" className="flex-1 w-full">
+                        <Button name="accept" id="kc-login" type="submit" size="xl" className="flex-1">
                             {msgStr("doYes")}
                         </Button>
-                        <Button variant="outline" size="xl" className="flex-1 w-full" name="cancel" id="kc-cancel" type="submit">
+                        <Button variant="outline" size="xl" className="flex-1" name="cancel" id="kc-cancel" type="submit">
                             {msgStr("doNo")}
                         </Button>
                     </div>

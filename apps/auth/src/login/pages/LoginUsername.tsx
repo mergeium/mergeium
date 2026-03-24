@@ -38,7 +38,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                 <div id="kc-registration">
                     <span>
                         {msg("noAccount")}{" "}
-                        <a tabIndex={6} href={url.registrationUrl}>
+                        <a tabIndex={6} href={url.registrationUrl} className="hover:underline hover:text-foreground">
                             {msg("doRegister")}
                         </a>
                     </span>
@@ -115,7 +115,7 @@ export default function LoginUsername(props: { kcContext: Extract<KcContext, { p
                                         name="rememberMe"
                                         defaultChecked={!!login.rememberMe}
                                     />
-                                    <Label htmlFor="rememberMe" className="text-sm font-normal text-muted-foreground">
+                                    <Label htmlFor="rememberMe" className="text-xs font-normal text-muted-foreground">
                                         {msg("rememberMe")}
                                     </Label>
                                 </div>

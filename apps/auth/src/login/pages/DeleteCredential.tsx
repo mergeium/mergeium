@@ -18,7 +18,7 @@ export default function DeleteCredential(props: { kcContext: Extract<KcContext, 
             headerNode={msg("deleteCredentialTitle", credentialLabel)}
         >
             <div className="space-y-3">
-                <p className="text-sm text-muted-foreground">{msg("deleteCredentialMessage", credentialLabel)}</p>
+                <p className="text-center text-sm text-muted-foreground">{msg("deleteCredentialMessage", credentialLabel)}</p>
                 <form className="flex gap-2" action={url.loginAction} method="POST">
                     <Button type="submit" size="xl" className="flex-1" name="cancel-aia" id="kc-decline" variant="outline">
                         {msgStr("doCancel")}

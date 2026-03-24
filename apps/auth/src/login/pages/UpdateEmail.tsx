@@ -41,7 +41,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
 
                 <div className="flex items-center gap-2">
                     <Checkbox id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
-                    <Label htmlFor="logout-sessions" className="text-sm font-normal">
+                    <Label htmlFor="logout-sessions" className="text-xs font-normal">
                         {msg("logoutOtherSessions")}
                     </Label>
                 </div>
@@ -50,7 +50,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                     <Button
                         type="submit"
                         size="xl"
-                        className="flex-1 w-full"
+                        className="flex-1"
                     >
                         {msgStr("doSubmit")}
                     </Button>
@@ -58,7 +58,7 @@ export default function UpdateEmail(props: { kcContext: Extract<KcContext, { pag
                         <Button
                             variant="outline"
                             size="xl"
-                            className="flex-1 w-full"
+                            className="flex-1"
                             type="submit"
                             name="cancel-aia"
                             value="true"

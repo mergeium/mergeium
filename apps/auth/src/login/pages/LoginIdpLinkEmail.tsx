@@ -16,19 +16,19 @@ export default function LoginIdpLinkEmail(props: { kcContext: Extract<KcContext,
             headerNode={msg("emailLinkIdpTitle", idpAlias)}
         >
             <div className="space-y-3">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-center text-sm text-muted-foreground">
                     {msg("emailLinkIdp1", idpAlias, brokerContext.username, realm.displayName)}
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-center text-sm text-muted-foreground">
                     {msg("emailLinkIdp2")}{" "}
-                    <a className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
+                    <a className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
                         {msg("doClickHere")}
                     </a>{" "}
                     {msg("emailLinkIdp3")}
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-center text-sm text-muted-foreground">
                     {msg("emailLinkIdp4")}{" "}
-                    <a className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
+                    <a className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
                         {msg("doClickHere")}
                     </a>{" "}
                     {msg("emailLinkIdp5")}

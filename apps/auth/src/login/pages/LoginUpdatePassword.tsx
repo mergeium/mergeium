@@ -72,11 +72,11 @@ export default function LoginUpdatePassword(props: { kcContext: Extract<KcContex
                 <LogoutOtherSessions i18n={i18n} />
 
                 <div className="flex gap-2">
-                    <Button type="submit" size="xl" className="flex-1 w-full">
+                    <Button type="submit" size="xl" className="flex-1">
                         {msgStr("doSubmit")}
                     </Button>
                     {isAppInitiatedAction && (
-                        <Button variant="outline" size="xl" className="flex-1 w-full" type="submit" name="cancel-aia" value="true">
+                        <Button variant="outline" size="xl" className="flex-1" type="submit" name="cancel-aia" value="true">
                             {msg("doCancel")}
                         </Button>
                     )}
@@ -94,7 +94,7 @@ function LogoutOtherSessions(props: { i18n: I18n }) {
     return (
         <div className="flex items-center gap-2">
             <Checkbox id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
-            <Label htmlFor="logout-sessions" className="text-sm font-normal">
+            <Label htmlFor="logout-sessions" className="text-xs font-normal">
                 {msg("logoutOtherSessions")}
             </Label>
         </div>

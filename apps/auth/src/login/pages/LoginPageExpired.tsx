@@ -11,14 +11,14 @@ export default function LoginPageExpired(props: { kcContext: Extract<KcContext, 
 
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("pageExpiredTitle")}>
-            <p className="text-sm text-muted-foreground">
-                {msg("pageExpiredMsg1")}
-                <a id="loginRestartLink" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginRestartFlowUrl}>
+            <p className="text-center text-sm text-muted-foreground">
+                {msg("pageExpiredMsg1")}{" "}
+                <a id="loginRestartLink" className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginRestartFlowUrl}>
                     {msg("doClickHere")}{" "}
                 </a>{" "}
                 .<br />
                 {msg("pageExpiredMsg2")}{" "}
-                <a id="loginContinueLink" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
+                <a id="loginContinueLink" className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
                     {msg("doClickHere")}
                 </a>{" "}
                 .

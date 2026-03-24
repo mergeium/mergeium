@@ -1,6 +1,11 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { EyeIcon, EyeSlashIcon, CopyIcon, CheckIcon } from "@phosphor-icons/react";
+import {
+  EyeIcon,
+  EyeSlashIcon,
+  CopyIcon,
+  CheckIcon,
+} from "@phosphor-icons/react";
 
 import { cn } from "@mergeium/ui/lib/utils";
 
@@ -11,8 +16,7 @@ const inputVariants = cva(
       variant: {
         default:
           "border border-input bg-transparent focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:bg-input/50 dark:bg-input/30 dark:disabled:bg-input/80",
-        secondary:
-          "border-0 bg-muted focus-visible:ring-0",
+        secondary: "border-0 bg-muted focus-visible:ring-0",
       },
       size: {
         default: "h-8 px-2.5 py-1",
@@ -26,7 +30,7 @@ const inputVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 type InputProps = Omit<React.ComponentProps<"input">, "size"> &
@@ -48,22 +52,35 @@ function Input({
   const hasSuffix = isPassword || copyable;
 
   const suffixAction = isPassword
-    ? { onClick: () => setShowPassword((v) => !v), label: showPassword ? "Hide password" : "Show password" }
+    ? {
+        onClick: () => setShowPassword((v) => !v),
+        label: showPassword ? "Hide password" : "Show password",
+      }
     : copyable
       ? {
           onClick: () => {
-            navigator.clipboard.writeText(String(props.value ?? props.defaultValue ?? "")).then(() => {
-              setCopied(true);
-              setTimeout(() => setCopied(false), 2000);
-            });
+            navigator.clipboard
+              .writeText(String(props.value ?? props.defaultValue ?? ""))
+              .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              });
           },
           label: "Copy",
         }
       : null;
 
-  const suffixIcon = isPassword
-    ? showPassword ? <EyeSlashIcon className="size-5" /> : <EyeIcon className="size-5" />
-    : copied ? <CheckIcon className="size-5" /> : <CopyIcon className="size-5" />;
+  const suffixIcon = isPassword ? (
+    showPassword ? (
+      <EyeSlashIcon className="size-5" />
+    ) : (
+      <EyeIcon className="size-5" />
+    )
+  ) : copied ? (
+    <CheckIcon className="size-5" />
+  ) : (
+    <CopyIcon className="size-5" />
+  );
 
   const inputEl = (
     <input
@@ -72,8 +89,9 @@ function Input({
       className={cn(
         inputVariants({ variant, size }),
         hasSuffix && "pr-10",
-        !hasSuffix && "file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
-        className
+        !hasSuffix &&
+          "file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
+        className,
       )}
       {...props}
     />

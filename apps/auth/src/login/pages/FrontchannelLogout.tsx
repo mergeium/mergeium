@@ -34,9 +34,9 @@ export default function FrontchannelLogout(props: { kcContext: Extract<KcContext
             headerNode={msg("frontchannel-logout.title")}
         >
             <div className="space-y-3">
-                <p className="text-sm text-muted-foreground">{msg("frontchannel-logout.message")}</p>
+                <p className="text-center text-sm text-muted-foreground">{msg("frontchannel-logout.message")}</p>
                 <Separator />
-                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
                     {logout.clients.map(client => (
                         <li key={client.name}>
                             {client.name}
@@ -51,7 +51,7 @@ export default function FrontchannelLogout(props: { kcContext: Extract<KcContext
                     ))}
                 </ul>
                 {logout.logoutRedirectUri !== undefined && (
-                    <Button size="xl" asChild>
+                    <Button size="xl" className="w-full" asChild>
                         <a id="continue" href={logout.logoutRedirectUri}>
                             {msg("doContinue")}
                         </a>

@@ -5,6 +5,7 @@ import Template from "../Template";
 import { Alert, AlertDescription } from "@mergeium/ui/components/alert";
 import { Button } from "@mergeium/ui/components/button";
 
+
 export default function Error(props: { kcContext: Extract<KcContext, { pageId: "error.ftl" }>; i18n: I18n }) {
     const { kcContext, i18n } = props;
 
@@ -20,13 +21,13 @@ export default function Error(props: { kcContext: Extract<KcContext, { pageId: "
             headerNode={msg("errorTitle")}
         >
             <div className="space-y-3">
-                <Alert variant="destructive">
+                <Alert variant="destructive" className="text-center">
                     <AlertDescription>
                         <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
                     </AlertDescription>
                 </Alert>
                 {!skipLink && client !== undefined && client.baseUrl !== undefined && (
-                    <Button variant="outline" size="xl" className="w-full" asChild>
+                    <Button variant="ghost" size="xl" className="w-full font-normal text-muted-foreground" asChild>
                         <a href={client.baseUrl}>{msg("backToApplication")}</a>
                     </Button>
                 )}

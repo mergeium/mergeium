@@ -12,7 +12,7 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
 
     const { url, isAppInitiatedAction, totp, mode, messagesPerField } = kcContext;
 
-    const { msg, msgStr, advancedMsg } = i18n;
+    const { msg, msgStr } = i18n;
 
     return (
         <Template
@@ -22,76 +22,46 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
             displayMessage={!messagesPerField.existsError("totp", "userLabel")}
         >
             <>
-                <ol className="list-decimal space-y-4 pl-5 text-sm">
-                    <li>
-                        <p>{msg("loginTotpStep1")}</p>
-                        <ul className="mt-1 list-disc pl-5">
-                            {totp.supportedApplications.map(app => (
-                                <li key={app}>{advancedMsg(app)}</li>
-                            ))}
-                        </ul>
-                    </li>
+                <div className="space-y-3">
+                    <p className="text-center text-sm text-muted-foreground">{msg("loginTotpStep1")}</p>
 
                     {mode == "manual" ? (
                         <>
-                            <li>
-                                <p>{msg("loginTotpManualStep2")}</p>
-                                <p className="my-2">
-                                    <span id="kc-totp-secret-key" className="font-mono text-base font-semibold">
-                                        {totp.totpSecretEncoded}
-                                    </span>
-                                </p>
-                                <p>
-                                    <a href={totp.qrUrl} id="mode-barcode" className="text-primary underline">
-                                        {msg("loginTotpScanBarcode")}
-                                    </a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>{msg("loginTotpManualStep3")}</p>
-                                <ul className="mt-1 list-disc pl-5">
-                                    <li id="kc-totp-type">
-                                        {msg("loginTotpType")}: {msg(`loginTotp.${totp.policy.type}`)}
-                                    </li>
-                                    <li id="kc-totp-algorithm">
-                                        {msg("loginTotpAlgorithm")}: {totp.policy.getAlgorithmKey()}
-                                    </li>
-                                    <li id="kc-totp-digits">
-                                        {msg("loginTotpDigits")}: {totp.policy.digits}
-                                    </li>
-                                    {totp.policy.type === "totp" ? (
-                                        <li id="kc-totp-period">
-                                            {msg("loginTotpInterval")}: {totp.policy.period}
-                                        </li>
-                                    ) : (
-                                        <li id="kc-totp-counter">
-                                            {msg("loginTotpCounter")}: {totp.policy.initialCounter}
-                                        </li>
-                                    )}
-                                </ul>
-                            </li>
+                            <p className="text-center text-sm text-muted-foreground">{msg("loginTotpManualStep2")}</p>
+                            <Input
+                                id="kc-totp-secret-key"
+                                variant="secondary"
+                                size="xl"
+                                className="text-center font-mono tracking-wider"
+                                defaultValue={totp.totpSecretEncoded}
+                                readOnly
+                                copyable
+                            />
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a href={totp.qrUrl} id="mode-barcode" className="text-primary hover:underline">
+                                    {msg("loginTotpScanBarcode")}
+                                </a>
+                            </p>
                         </>
                     ) : (
-                        <li>
-                            <p>{msg("loginTotpStep2")}</p>
-                            <img
-                                id="kc-totp-secret-qr-code"
-                                src={`data:image/png;base64, ${totp.totpSecretQrCode}`}
-                                alt="Figure: Barcode"
-                                className="my-4"
-                            />
-                            <p>
-                                <a href={totp.manualUrl} id="mode-manual" className="text-primary underline">
+                        <>
+                            <p className="text-center text-sm text-muted-foreground">{msg("loginTotpStep2")}</p>
+                            <div className="flex justify-center">
+                                <img
+                                    id="kc-totp-secret-qr-code"
+                                    src={`data:image/png;base64, ${totp.totpSecretQrCode}`}
+                                    alt="Figure: Barcode"
+                                    className="rounded-lg"
+                                />
+                            </div>
+                            <p className="text-center text-sm text-muted-foreground">
+                                <a href={totp.manualUrl} id="mode-manual" className="text-primary hover:underline">
                                     {msg("loginTotpUnableToScan")}
                                 </a>
                             </p>
-                        </li>
+                        </>
                     )}
-                    <li>
-                        <p>{msg("loginTotpStep3")}</p>
-                        <p>{msg("loginTotpStep3DeviceName")}</p>
-                    </li>
-                </ol>
+                </div>
 
                 <form action={url.loginAction} id="kc-totp-settings-form" method="post" className="mt-6 space-y-3">
                     <div className="space-y-2">
@@ -145,11 +115,11 @@ export default function LoginConfigTotp(props: { kcContext: Extract<KcContext, {
                     <LogoutOtherSessions i18n={i18n} />
 
                     <div className="flex gap-2">
-                        <Button type="submit" size="xl" className="flex-1 w-full" id="saveTOTPBtn">
+                        <Button type="submit" size="xl" className="flex-1" id="saveTOTPBtn">
                             {msgStr("doSubmit")}
                         </Button>
                         {isAppInitiatedAction && (
-                            <Button type="submit" variant="outline" size="xl" className="flex-1 w-full" id="cancelTOTPBtn" name="cancel-aia" value="true">
+                            <Button type="submit" variant="outline" size="xl" className="flex-1" id="cancelTOTPBtn" name="cancel-aia" value="true">
                                 {msg("doCancel")}
                             </Button>
                         )}
@@ -167,7 +137,7 @@ function LogoutOtherSessions(props: { i18n: I18n }) {
     return (
         <div id="kc-form-options" className="flex items-center gap-2">
             <Checkbox id="logout-sessions" name="logout-sessions" value="on" defaultChecked />
-            <Label htmlFor="logout-sessions" className="cursor-pointer text-sm">
+            <Label htmlFor="logout-sessions" className="cursor-pointer text-xs">
                 {msg("logoutOtherSessions")}
             </Label>
         </div>

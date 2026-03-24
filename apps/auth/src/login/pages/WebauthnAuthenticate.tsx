@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useScript } from "./WebauthnAuthenticate.useScript";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@mergeium/ui/components/button";
 import Template from "../Template";
 
 
@@ -29,7 +30,7 @@ export default function WebauthnAuthenticate(props: { kcContext: Extract<KcConte
                 <div id="kc-registration">
                     <span>
                         {msg("noAccount")}{" "}
-                        <a tabIndex={6} href={url.registrationUrl} className="text-primary underline">
+                        <a tabIndex={6} href={url.registrationUrl} className="text-primary hover:underline">
                             {msg("doRegister")}
                         </a>
                     </span>
@@ -58,43 +59,41 @@ export default function WebauthnAuthenticate(props: { kcContext: Extract<KcConte
                             {shouldDisplayAuthenticators && (
                                 <div className="space-y-3">
                                     {authenticators.authenticators.length > 1 && (
-                                        <p className="text-sm font-medium">{msg("webauthn-available-authenticators")}</p>
+                                        <p className="text-center text-sm text-muted-foreground">{msg("webauthn-available-authenticators")}</p>
                                     )}
                                     <div className="space-y-2">
                                         {authenticators.authenticators.map((authenticator, i) => (
                                             <div
                                                 key={i}
                                                 id={`kc-webauthn-authenticator-item-${i}`}
-                                                className="flex items-center gap-3 rounded-md border p-3"
+                                                className="rounded-lg bg-muted p-3 text-center"
                                             >
-                                                <div className="flex-1">
-                                                    <div id={`kc-webauthn-authenticator-label-${i}`} className="font-medium">
-                                                        {advancedMsg(authenticator.label)}
+                                                <div id={`kc-webauthn-authenticator-label-${i}`} className="text-sm font-medium">
+                                                    {advancedMsg(authenticator.label)}
+                                                </div>
+                                                {authenticator.transports.displayNameProperties?.length && (
+                                                    <div
+                                                        id={`kc-webauthn-authenticator-transport-${i}`}
+                                                        className="text-xs text-muted-foreground"
+                                                    >
+                                                        {authenticator.transports.displayNameProperties
+                                                            .map((displayNameProperty, i, arr) => ({
+                                                                displayNameProperty,
+                                                                hasNext: i !== arr.length - 1
+                                                            }))
+                                                            .map(({ displayNameProperty, hasNext }) => (
+                                                                <Fragment key={displayNameProperty}>
+                                                                    {advancedMsg(displayNameProperty)}
+                                                                    {hasNext && <span>, </span>}
+                                                                </Fragment>
+                                                            ))}
                                                     </div>
-                                                    {authenticator.transports.displayNameProperties?.length && (
-                                                        <div
-                                                            id={`kc-webauthn-authenticator-transport-${i}`}
-                                                            className="text-sm text-muted-foreground"
-                                                        >
-                                                            {authenticator.transports.displayNameProperties
-                                                                .map((displayNameProperty, i, arr) => ({
-                                                                    displayNameProperty,
-                                                                    hasNext: i !== arr.length - 1
-                                                                }))
-                                                                .map(({ displayNameProperty, hasNext }) => (
-                                                                    <Fragment key={displayNameProperty}>
-                                                                        {advancedMsg(displayNameProperty)}
-                                                                        {hasNext && <span>, </span>}
-                                                                    </Fragment>
-                                                                ))}
-                                                        </div>
-                                                    )}
-                                                    <div className="text-sm text-muted-foreground">
-                                                        <span id={`kc-webauthn-authenticator-createdlabel-${i}`}>
-                                                            {msg("webauthn-createdAt-label")}
-                                                        </span>{" "}
-                                                        <span id={`kc-webauthn-authenticator-created-${i}`}>{authenticator.createdAt}</span>
-                                                    </div>
+                                                )}
+                                                <div className="text-xs text-muted-foreground">
+                                                    <span id={`kc-webauthn-authenticator-createdlabel-${i}`}>
+                                                        {msg("webauthn-createdAt-label")}
+                                                    </span>{" "}
+                                                    <span id={`kc-webauthn-authenticator-created-${i}`}>{authenticator.createdAt}</span>
                                                 </div>
                                             </div>
                                         ))}
@@ -104,13 +103,15 @@ export default function WebauthnAuthenticate(props: { kcContext: Extract<KcConte
                         </>
                     )}
                     <div id="kc-form-buttons" className="mt-4">
-                        <input
+                        <Button
                             id={authButtonId}
                             type="button"
                             autoFocus
-                            value={msgStr("webauthn-doAuthenticate")}
-                            className="inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        />
+                            size="xl"
+                            className="w-full"
+                        >
+                            {msgStr("webauthn-doAuthenticate")}
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -13,9 +13,9 @@ export default function LoginIdpLinkConfirmOverride(props: { kcContext: Extract<
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("confirmOverrideIdpTitle")}>
             <form id="kc-register-form" action={url.loginAction} method="post" className="space-y-3">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-center text-sm text-muted-foreground">
                     {msg("pageExpiredMsg1")}{" "}
-                    <a id="loginRestartLink" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginRestartFlowUrl}>
+                    <a id="loginRestartLink" className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginRestartFlowUrl}>
                         {msg("doClickHere")}
                     </a>
                 </p>

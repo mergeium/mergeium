@@ -20,7 +20,7 @@ export default function LoginResetOtp(props: { kcContext: Extract<KcContext, { p
             headerNode={msg("doLogIn")}
         >
             <form id="kc-otp-reset-form" action={url.loginAction} method="post" className="space-y-6">
-                <p id="kc-otp-reset-form-description" className="text-sm text-muted-foreground">
+                <p id="kc-otp-reset-form-description" className="text-center text-sm text-muted-foreground">
                     {msg("otp-reset-description")}
                 </p>
 

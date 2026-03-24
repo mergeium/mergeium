@@ -148,7 +148,7 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                 )}
 
                 {recaptchaRequired && (recaptchaVisible || recaptchaAction === undefined) && (
-                    <div>
+                    <div className="flex justify-center">
                         <div className="g-recaptcha" data-size="compact" data-sitekey={recaptchaSiteKey} data-action={recaptchaAction} />
                     </div>
                 )}
@@ -170,7 +170,7 @@ export default function Register(props: { kcContext: Extract<KcContext, { pageId
                     </Button>
                 )}
                 <p className="text-center text-sm text-muted-foreground">
-                    <a href={url.loginUrl} className="underline hover:text-foreground">{msg("backToLogin")}</a>
+                    <a href={url.loginUrl} className="hover:underline hover:text-foreground">{msg("backToLogin")}</a>
                 </p>
             </form>
         </Template>
@@ -185,31 +185,26 @@ function TermsAcceptance(props: {
     const { msg } = i18n;
 
     return (
-        <>
-            <div className="space-y-2">
-                <p className="text-sm font-medium">{msg("termsTitle")}</p>
-                <div id="kc-registration-terms-text" className="text-sm text-muted-foreground">{msg("termsText")}</div>
+        <div className="space-y-2">
+            <div className="flex items-start gap-2">
+                <Checkbox
+                    id="termsAccepted"
+                    name="termsAccepted"
+                    className="mt-0.5"
+                    aria-invalid={messagesPerField.existsError("termsAccepted")}
+                />
+                <Label htmlFor="termsAccepted" className="text-xs font-normal leading-relaxed text-muted-foreground">
+                    {msg("termsText")}
+                </Label>
             </div>
-            <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                        id="termsAccepted"
-                        name="termsAccepted"
-                        aria-invalid={messagesPerField.existsError("termsAccepted")}
-                    />
-                    <Label htmlFor="termsAccepted" className="text-sm font-normal">
-                        {msg("acceptTerms")}
-                    </Label>
-                </div>
-                {messagesPerField.existsError("termsAccepted") && (
-                    <span
-                        id="input-error-terms-accepted"
-                        className="text-xs text-destructive"
-                        aria-live="polite"
-                        dangerouslySetInnerHTML={{ __html: kcSanitize(messagesPerField.get("termsAccepted")) }}
-                    />
-                )}
-            </div>
-        </>
+            {messagesPerField.existsError("termsAccepted") && (
+                <span
+                    id="input-error-terms-accepted"
+                    className="text-xs text-destructive"
+                    aria-live="polite"
+                    dangerouslySetInnerHTML={{ __html: kcSanitize(messagesPerField.get("termsAccepted")) }}
+                />
+            )}
+        </div>
     );
 }

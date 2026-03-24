@@ -16,10 +16,10 @@ export default function LoginVerifyEmail(props: { kcContext: Extract<KcContext, 
             displayInfo
             headerNode={msg("emailVerifyTitle")}
             infoNode={
-                <p className="text-sm text-muted-foreground">
+                <p className="text-center text-sm text-muted-foreground">
                     {msg("emailVerifyInstruction2")}
                     <br />
-                    <a className="font-medium text-primary underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
+                    <a className="font-medium text-primary hover:underline underline-offset-4 hover:text-primary/80" href={url.loginAction}>
                         {msg("doClickHere")}
                     </a>
                     &nbsp;
@@ -27,7 +27,7 @@ export default function LoginVerifyEmail(props: { kcContext: Extract<KcContext, 
                 </p>
             }
         >
-            <p className="text-sm text-muted-foreground">{msg("emailVerifyInstruction1", user?.email ?? "")}</p>
+            <p className="text-center text-sm text-muted-foreground">{msg("emailVerifyInstruction1", user?.email ?? "")}</p>
         </Template>
     );
 }

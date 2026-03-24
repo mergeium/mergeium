@@ -74,8 +74,8 @@ export default function LoginPassword(props: { kcContext: Extract<KcContext, { p
                         </div>
 
                         {realm.resetPasswordAllowed && (
-                            <p className="text-center text-sm text-muted-foreground">
-                                <a tabIndex={5} href={url.loginResetCredentialsUrl} className="underline hover:text-foreground">
+                            <p className="text-right text-xs text-muted-foreground">
+                                <a tabIndex={5} href={url.loginResetCredentialsUrl} className="hover:underline hover:text-foreground">
                                     {msg("doForgotPassword")}
                                 </a>
                             </p>

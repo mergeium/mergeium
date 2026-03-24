@@ -63,7 +63,7 @@ export default function LoginRecoveryAuthnCodeConfig(props: { kcContext: Extract
                         document.getElementById("saveRecoveryAuthnCodesBtn").disabled = !checked;
                     }}
                 />
-                <Label htmlFor="kcRecoveryCodesConfirmationCheck" className="cursor-pointer text-sm">
+                <Label htmlFor="kcRecoveryCodesConfirmationCheck" className="cursor-pointer text-xs">
                     {msg("recovery-codes-confirmation-message")}
                 </Label>
             </div>
@@ -76,11 +76,11 @@ export default function LoginRecoveryAuthnCodeConfig(props: { kcContext: Extract
                 <LogoutOtherSessions i18n={i18n} />
 
                 <div className="flex gap-2">
-                    <Button type="submit" size="xl" className="flex-1 w-full" id="saveRecoveryAuthnCodesBtn" disabled>
+                    <Button type="submit" size="xl" className="flex-1" id="saveRecoveryAuthnCodesBtn" disabled>
                         {msgStr("recovery-codes-action-complete")}
                     </Button>
                     {isAppInitiatedAction && (
-                        <Button type="submit" variant="outline" size="xl" className="flex-1 w-full" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
+                        <Button type="submit" variant="outline" size="xl" className="flex-1" id="cancelRecoveryAuthnCodesBtn" name="cancel-aia" value="true">
                             {msg("recovery-codes-action-cancel")}
                         </Button>
                     )}
@@ -97,7 +97,7 @@ function LogoutOtherSessions(props: { i18n: I18n }) {
     return (
         <div id="kc-form-options" className="flex items-center gap-2">
             <Checkbox id="logout-sessions" name="logout-sessions" value="on" defaultChecked />
-            <Label htmlFor="logout-sessions" className="cursor-pointer text-sm">
+            <Label htmlFor="logout-sessions" className="cursor-pointer text-xs">
                 {msg("logoutOtherSessions")}
             </Label>
         </div>

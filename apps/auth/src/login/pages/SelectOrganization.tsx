@@ -2,7 +2,7 @@ import { MouseEvent, useRef, useState } from "react";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "@mergeium/ui/components/button";
-import { cn } from "@mergeium/ui/lib/utils";
+
 import Template from "../Template";
 
 export default function SelectOrganization(props: { kcContext: Extract<KcContext, { pageId: "select-organization.ftl" }>; i18n: I18n }) {
@@ -35,21 +35,19 @@ export default function SelectOrganization(props: { kcContext: Extract<KcContext
     };
 
     const organizations = user.organizations ?? [];
-    const shouldDisplayGrid = organizations.length > 3;
 
     return (
-        <Template kcContext={kcContext} i18n={i18n} headerNode={null}>
+        <Template kcContext={kcContext} i18n={i18n} headerNode={msg("organization.select")}>
             <form ref={formRef} action={url.loginAction} method="post">
                 <div id="kc-user-organizations" className="space-y-3">
-                    <h2 className="text-lg font-semibold">{msg("organization.select")}</h2>
-                    <div className={cn("grid gap-2", shouldDisplayGrid ? "grid-cols-2" : "grid-cols-1")}>
+                    <div className="space-y-2">
                         {organizations.map(({ alias, name }) => (
                             <Button
                                 key={alias}
                                 id={`organization-${alias}`}
-                                variant="outline"
+                                variant="secondary"
                                 size="xl"
-                                className="h-auto w-full justify-start p-4"
+                                className="w-full"
                                 type="button"
                                 onClick={onOrganizationClick(alias)}
                                 disabled={isSubmitting}

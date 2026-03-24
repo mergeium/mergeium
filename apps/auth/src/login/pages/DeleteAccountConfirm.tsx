@@ -13,13 +13,13 @@ export default function DeleteAccountConfirm(props: { kcContext: Extract<KcConte
     return (
         <Template kcContext={kcContext} i18n={i18n} headerNode={msg("deleteAccountConfirm")}>
             <div className="space-y-3">
-                <p className="text-sm font-medium text-destructive">{msg("irreversibleAction")}</p>
-                <p className="text-sm text-muted-foreground">{msg("deletingImplies")}</p>
+                <p className="text-center text-sm font-medium text-destructive">{msg("irreversibleAction")}</p>
+                <p className="text-center text-sm text-muted-foreground">{msg("deletingImplies")}</p>
                 <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
                     <li>{msg("loggingOutImmediately")}</li>
                     <li>{msg("errasingData")}</li>
                 </ul>
-                <p className="text-sm font-medium">{msg("finalDeletionConfirmation")}</p>
+                <p className="text-center text-sm font-medium">{msg("finalDeletionConfirmation")}</p>
                 <form action={url.loginAction} method="post" className="flex gap-2">
                     {triggered_from_aia && (
                         <Button type="submit" size="xl" className="flex-1" name="cancel-aia" value="true" variant="outline">
